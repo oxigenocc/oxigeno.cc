@@ -11,8 +11,10 @@ class Distribuidor(models.Model):
     ciudad = models.CharField(max_length=100)
     a_domicilio =  models.BooleanField()
     pago_con_tarjeta = models.BooleanField()
-    notas = models.TextField(null=True)
+    notas = models.TextField(null=True, blank=True)
     telefono = models.CharField(max_length=20)
+    whatsapp = models.CharField(max_length=20, null=True, blank= True)
+    link_pagina = models.CharField(max_length=100, null=True, blank=True)
     ultima_actualizacion = models.DateTimeField('date updated')
 
 
