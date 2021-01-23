@@ -1,4 +1,6 @@
 from django.db import models
+from django_google_maps import fields as map_fields
+
 
 # Create your models here.
 
@@ -16,6 +18,8 @@ class Distribuidor(models.Model):
     whatsapp = models.CharField(max_length=20, null=True, blank= True)
     link_pagina = models.CharField(max_length=100, null=True, blank=True)
     ultima_actualizacion = models.DateTimeField('date updated')
+    address = map_fields.AddressField(max_length=200, default='')
+    geolocation = map_fields.GeoLocationField(max_length=100, default='')
 
 
     def __str__(self):
