@@ -10,10 +10,11 @@ from .models import Distribuidor, Tanque, Concentrador
 class DistribuidorAdmin(admin.ModelAdmin):
     formfield_overrides = {
         map_fields.AddressField: {'widget': map_widgets.GoogleMapsAddressWidget(attrs={
-            'data-autocomplete-options': json.dumps({ 'types': ['geocode',
-            'establishment'], 'componentRestrictions': {
-                  'country': 'mexico'
-              }
+            'data-autocomplete-options': json.dumps({ 'types': 
+                                                        ['geocode', 'establishment'], 
+                                                    'componentRestrictions': {
+                                                        'country': 'mx'
+                                                    }
           })
       })},
     }
