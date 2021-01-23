@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'oxigeno.apps.OxigenoConfig',
     'django.contrib.redirects',
     'django.contrib.sites',
+    'django_google_maps'
 ]
 
 SITE_ID = 1
+
+GOOGLE_MAPS_API_KEY = config('API_KEY')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
