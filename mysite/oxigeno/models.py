@@ -24,8 +24,12 @@ class Tanque(models.Model):
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
     disponibilidad_recarga = models.IntegerField()
+    def __str__(self):
+        return "Tanque- " + self.distribuidor.nombre_distribuidor
 
 class Concentrador(models.Model):
     distribuidor = models.ForeignKey(Distribuidor, on_delete=models.CASCADE)
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
+    def __str__(self):
+        return "Concentrador- " + self.distribuidor.nombre_distribuidor
