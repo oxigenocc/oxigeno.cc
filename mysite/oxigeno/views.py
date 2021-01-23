@@ -42,4 +42,4 @@ def rest_get(request):
             'tanques': tanques
         }
         resp.append(data)
-    return JsonResponse(resp)
+    return JsonResponse(resp, safe=False)
