@@ -6,9 +6,10 @@ from .models import Distribuidor, Tanque, Concentrador
 
 
 def index(request):
-    template = loader.get_template('oxigeno/index.html')
-    context = {}
-    return HttpResponse(template.render(context, request))
+    pass
+    # template = loader.get_template('index')
+    # context = {}
+    # return HttpResponse(template.render(context, request))
 
 def rest_get(request):
     distribuidores = Distribuidor.objects.all()
