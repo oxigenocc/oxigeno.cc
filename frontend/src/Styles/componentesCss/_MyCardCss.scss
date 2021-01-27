@@ -1,0 +1,46 @@
+.card-lencho{
+  margin-bottom: 20px;
+}
+
+.tarjetas-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+  .card-title{
+    font-size: 25px;
+  }
+  .mycard-footer{  
+    height: 50px;
+  }
+  
+  .card-header{
+    text-align: end;
+  }
+  
+  .map{  
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    height: 50px;
+    background-color: #196BA7;
+    color: white;
+    border-bottom-left-radius: 3%;
+  }
+  
+  .tel{  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: #3BB56B;  
+    border-bottom-right-radius: 3%;
+    
+  }
+  
+  a{
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  

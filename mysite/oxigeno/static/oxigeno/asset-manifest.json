@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c0271488.chunk.css",
+    "main.js": "/static/js/main.bdaaa6ee.chunk.js",
+    "main.js.map": "/static/js/main.bdaaa6ee.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.20172afa.js",
+    "runtime-main.js.map": "/static/js/runtime-main.20172afa.js.map",
+    "static/css/2.74fc6e00.chunk.css": "/static/css/2.74fc6e00.chunk.css",
+    "static/js/2.855c0921.chunk.js": "/static/js/2.855c0921.chunk.js",
+    "static/js/2.855c0921.chunk.js.map": "/static/js/2.855c0921.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.74fc6e00.chunk.css.map": "/static/css/2.74fc6e00.chunk.css.map",
+    "static/css/main.c0271488.chunk.css.map": "/static/css/main.c0271488.chunk.css.map",
+    "static/js/2.855c0921.chunk.js.LICENSE.txt": "/static/js/2.855c0921.chunk.js.LICENSE.txt",
+    "static/media/indexCss.scss": "/static/media/logoOxigenoCC.303f0e67.PNG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20172afa.js",
+    "static/css/2.74fc6e00.chunk.css",
+    "static/js/2.855c0921.chunk.js",
+    "static/css/main.c0271488.chunk.css",
+    "static/js/main.bdaaa6ee.chunk.js"
+  ]
+}
