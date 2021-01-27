@@ -16,11 +16,10 @@ class Distribuidor(models.Model):
     notas = models.TextField(null=True, blank=True)
     telefono = models.CharField(max_length=20)
     whatsapp = models.CharField(max_length=20, null=True, blank= True)
-    link_pagina = models.CharField(max_length=100, null=True, blank=True)
-    ultima_actualizacion = models.DateTimeField('date updated')
+    link_pagina = models.CharField(max_length=100, null=True, blank=True)        
     address = map_fields.AddressField(max_length=200, default='')
     geolocation = map_fields.GeoLocationField(max_length=100, default='')
-
+    ultima_actualizacion = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.nombre_distribuidor
