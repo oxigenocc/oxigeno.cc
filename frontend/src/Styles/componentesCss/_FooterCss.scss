@@ -1,0 +1,25 @@
+.footerContainer{
+    background-color: rgba($color: #e9ecef, $alpha: 1);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 17px;
+    padding-left: 40px;
+    padding-right: 40px ;
+    font-size: 14px;
+}
+
+.copyOxigeno{
+    color: rgba($color: #188AFC, $alpha: 0.9);
+}
+.refLsd{
+    a{
+        color: rgba($color: #188AFC, $alpha: 0.8);
+        text-decoration: none;
+
+    }        
+    
+    a:hover{
+            color: rgba($color: #7d1cca, $alpha: 0.9);
+    }
+}

@@ -1,0 +1,47 @@
+.main-container{
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0 5%;
+    // background-color: blue;
+}
+.menu-lateral-container{
+    display: inline-block;
+    margin-bottom: 40px;
+    // background-color: red;
+    // background-color: black;
+}
+
+.menu-lateral-header{
+    font-size: 12px;
+    padding: 5px 10px;
+    color: rgba($color: black, $alpha: 0.7)
+}
+
+#tanque-header{
+    cursor: pointer;
+}
+
+.flecha{
+    float: right;
+}
+.flecha-texto{
+    float: left;
+}
+
+.menu-checkbox{
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.switch-container{
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.switch{
+    height: 50px;
+    color: green;
+}
+

@@ -1,0 +1,255 @@
+$imageLogoHEader: url('../../img/logoOxigenoCC.PNG');
+$trianguloWidth: 40%;
+$headerHeight: 270px;
+
+.Header{
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    height: $headerHeight;
+    @media ( max-width: 480px) {
+        flex-flow: row wrap;
+    }
+}
+
+.Fondo1{
+    z-index: -1;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(146,246,253,0.5) 50%);
+    width: $trianguloWidth;
+    height: $headerHeight;
+    right: 0;
+}
+
+.Triangulo-left{
+    z-index: -10;
+    position: absolute;
+    right: $trianguloWidth;
+    margin-left: -50px;
+    width: 60px;
+    height: 0px;
+    border-width: 30px;
+    border-top-width: $headerHeight;
+    border-bottom-width: 0px;
+    border-right-width: 130px;
+    border-left-width: 0px;
+    border-color: transparent rgba(146,246,253,0.4) transparent transparent;
+    border-style: solid;
+    display: inline-block;
+    @media ( max-width: 750px){
+        border-right-width: 110px;
+    }
+}
+
+.Triangulo-right{
+    width: 60px;
+    height: 0px;
+    border-width: 30px;
+    border-top-width: $headerHeight;
+    border-bottom-width: 0px;
+    border-right-width: 0px;
+    border-left-width: 130px;
+    border-color: transparent transparent transparent  rgba(146,246,253,0.6);
+    border-style: solid;
+    display: inline-block;
+    @media ( max-width: 750px){
+        border-left-width: 110px;
+    }
+}
+
+.HeaderContenedorTexto{  
+    // background-color: skyblue;
+    display: flex;  
+    flex-flow: column nowrap;
+    height: 100%;
+    width: 40%;
+    margin: 0 0 0 5%;
+    .HeaderLogo{
+        background-image: $imageLogoHEader;
+        height: 70px;
+        width: 80px;
+        margin-top: 10px;
+        background-size: 100% 100%;
+        @media ( max-width: 750px){
+            height: 50px;
+            width: 60px;
+        }
+    }
+    .HeaderTitulo{
+        font-family: Roboto, sans-serif;
+        width: 100%;
+        color: #188AFC;
+        .black{
+            color: black;
+        }
+        font-size: 55px;
+        font-weight: bold;
+        @media ( max-width: 750px){
+            font-size: 40px;
+        }
+    }
+    .HeaderTexto{
+        margin-top: 5px;
+        padding-left: 5px;
+        font-family: Roboto, sans-serif;
+        width: 450px;
+        color: rgba($color: #000000, $alpha: 0.54);
+        @media ( max-width: 750px){
+            font-size: 12px;
+            width: 60%;
+        }
+        @media ( max-width: 480px){
+            font-size: 10px;
+            width: 90%;
+        }
+    }
+    @media ( max-width: 750px){
+        width: 60%;
+    }
+    @media ( max-width: 750px){
+        width: 100%;
+    }
+}    
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.HeaderBotonesRedes{
+    z-index: 10;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    margin: 50px;
+    margin-top: 80px;
+    margin-left:5px ;
+    // background-color: saddlebrown;
+    height: 150px;
+    width: 200px;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    color: white;
+    .HeaderFacebook{
+        .logofacebook{
+            font-size: 25px;
+            margin-right: 5px;
+            @media ( max-width: 750px){
+                font-size: 15px;
+            }
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25%;
+        background-color: #2339FF;
+        border-radius: 10px;
+        cursor: pointer;
+        @media ( max-width: 480px){
+            height: 100%;
+            width: 30%;
+            font-size: 10px;
+        }
+    }
+    .HeaderWhatsapp{
+        .logowhatsapp{
+            font-size: 25px;
+            margin-right: 5px;
+            @media ( max-width: 750px){
+                font-size: 15px;
+            }
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25%;
+        background-color:#25D366;
+        border-radius: 10px;
+        cursor: pointer;
+        @media ( max-width: 480px){
+            height: 100%;
+            width: 30%;
+            font-size: 10px;
+        }
+    }
+    .HeaderTwitter{
+        .logotwitter{
+            font-size: 25px;
+            margin-right: 5px;
+            @media ( max-width: 750px){
+                font-size: 15px;
+            }
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 25%;
+        border-radius: 10px;
+        background-color:#34B7F1;
+        cursor: pointer;
+        @media ( max-width: 480px){
+            height: 100%;
+            width: 30%;
+            font-size: 10px;
+        }
+    }
+    @media ( max-width: 1200px){
+        position: absolute;
+        right: 0;
+    }
+    @media ( max-width: 750px){
+        margin: 20px;
+        width: 170px;
+        font-size: 12px;
+    }
+    @media ( max-width: 480px){
+        position: inherit;
+        flex-flow: row;
+        width: 100%;
+        height: 38px;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 5px 0;
+    }
+}
+
+@media ( max-width: 750px) {
+    $headerHeight: 200px;
+
+    .Header{
+        height: $headerHeight;
+    }
+    .Fondo1{
+        height: $headerHeight;
+    }
+
+    .Triangulo-left{
+        border-top-width: $headerHeight;
+    }
+
+    .Triangulo-right{
+        border-top-width: $headerHeight;
+    }
+}
+
+@media ( max-width: 480px) {
+    $headerHeight: 230px;
+
+    .Header{
+        height: $headerHeight;
+    }
+    .HeaderContenedorTexto{
+        height: 75%;
+    }
+    .Fondo1{
+        height: $headerHeight;
+    }
+
+    .Triangulo-left{
+        border-top-width: $headerHeight;
+    }
+
+    .Triangulo-right{
+        border-top-width: $headerHeight;
+    }
+}
+
