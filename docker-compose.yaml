@@ -25,6 +25,6 @@ services:
       - web
     volumes:
       - static_volume:/mysite/static/
-  volumes:
-    static_volume:
+volumes:
+  static_volume:
 
