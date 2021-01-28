@@ -10,7 +10,7 @@ services:
   web:
     restart: always
     build: .
-    command: bash -c "python manage.py makemigrations --skip-checks && python manage.py migrate && python manage.py collectstatic && gunicorn --bind 0.0.0.0:8000 mysite.wsgi:application"
+    command: bash -c "python manage.py makemigrations --skip-checks && python manage.py migrate && gunicorn --bind 0.0.0.0:8000 mysite.wsgi:application"
     ports:
       - "8000:8000"
     depends_on:

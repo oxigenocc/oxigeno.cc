@@ -134,6 +134,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-print(os.path.join(BASE_DIR, 'oxigeno/static/oxigeno/static'))
+print(os.path.join(BASE_DIR, 'oxigeno/static'))
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/oxigeno/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
