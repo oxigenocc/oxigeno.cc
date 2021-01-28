@@ -1,0 +1,227 @@
+[
+  {
+    "nombre_distribuidor": "Gobierno de la Ciudad de México - Gustavo A. Madero",
+    "horario": "Lunes a Viernes de 9:00 a 17:00",
+    "estado": "CDMX",
+    "direccion": "Calz. San Juan de Aragón 222, Constitución de la República, Gustavo A. Madero, 07469 Ciudad de México, CDMX",
+    "ciudad": "Gustavo A. Madero",
+    "a_domicilio": true,
+    "pago_con_tarjeta": false,
+    "notas": "",
+    "telefono": "5556581111",
+    "ultima_actualizacion": "2021-01-23T06:04:40Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 0,
+        "disponibilidad_venta": 51
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 1,
+        "disponibilidad_venta": 10,
+        "disponibilidad_recarga": 0
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "Gobierno de la Ciudad de México - Iztapalapa",
+    "horario": "Lunes a Viernes de 9:00 a 17:00",
+    "estado": "CDMX",
+    "direccion": "San Lucas, Iztapalapa, 09000 Ciudad de México, CDMX",
+    "ciudad": "Iztapalapa",
+    "a_domicilio": false,
+    "pago_con_tarjeta": false,
+    "notas": "",
+    "telefono": "5556581111",
+    "ultima_actualizacion": "2021-01-23T06:08:27Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 0,
+        "disponibilidad_venta": 0
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 42,
+        "disponibilidad_venta": 2,
+        "disponibilidad_recarga": 6
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "Sivta Homecare S.A. de C.V.",
+    "horario": "Lunes a Viernes: 8:00 a 17:30 - Guardia 24/7",
+    "estado": "CDMX",
+    "direccion": "Arenal 557, Arenal Tepepan, Tlalpan, 14610 Ciudad de México, CDMX",
+    "ciudad": "Tlalpan",
+    "a_domicilio": false,
+    "pago_con_tarjeta": false,
+    "notas": "",
+    "telefono": "55556053",
+    "ultima_actualizacion": "2021-01-23T06:12:38Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 5
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 34,
+        "disponibilidad_venta": 2,
+        "disponibilidad_recarga": 6
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "City Services México",
+    "horario": "Lun a Vie de 8:00 a 20:00 Sáb de 9:00 a 14:00",
+    "estado": "CDMX",
+    "direccion": "Trigo 8, Granjas Esmeralda, Iztapalapa, 09810 Ciudad de México, CDMX",
+    "ciudad": "Iztapalapa",
+    "a_domicilio": false,
+    "pago_con_tarjeta": true,
+    "notas": "",
+    "telefono": "5526017810",
+    "ultima_actualizacion": "2021-01-23T06:21:19Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 5
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 6,
+        "disponibilidad_venta": 10,
+        "disponibilidad_recarga": 11
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "INFRA",
+    "horario": "Lunes a Domingo de 9:00 a 17:00",
+    "estado": "CDMX",
+    "direccion": "Blvd. Independencia, San Isidro No. 2323-Ote, Ciudad de México, CDMX",
+    "ciudad": "CDMX",
+    "a_domicilio": true,
+    "pago_con_tarjeta": true,
+    "notas": "Número general de INFRA llamar para conocer sucursal más cercana",
+    "telefono": "5521221350",
+    "ultima_actualizacion": "2021-01-23T06:23:52Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 2,
+        "disponibilidad_venta": 2
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 5,
+        "disponibilidad_venta": 40,
+        "disponibilidad_recarga": 3
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "AQYMSA Artículos Químicos y Médicos S.A de C.V",
+    "horario": "Lun a Vie de 9:00 a 18:30 Sáb de 10:30 a 15:30",
+    "estado": "CDMX",
+    "direccion": "Av. Cuauhtémoc 249, Roma Nte., Cuauhtémoc, 06760 Ciudad de México, CDMX",
+    "ciudad": "Cuauhtémoc",
+    "a_domicilio": false,
+    "pago_con_tarjeta": true,
+    "notas": "Tanques y concentradores hasta mediados de febrero",
+    "telefono": "5555841575",
+    "ultima_actualizacion": "2021-01-23T06:26:33Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 5
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 2,
+        "disponibilidad_recarga": 3
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "Exel Air",
+    "horario": "Lun a Vie de 9:00 a 17:45 Sáb de 9:00 a 13:00",
+    "estado": "Estado de México",
+    "direccion": "Vía Gustavo Baz 4863, Industrial Barrientos, 54015 Tlalnepantla de Baz, Méx.",
+    "ciudad": "Tlalnepantla de Baz",
+    "a_domicilio": false,
+    "pago_con_tarjeta": true,
+    "notas": "",
+    "telefono": "5553218777",
+    "ultima_actualizacion": "2021-01-23T06:30:06Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 5
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 4,
+        "disponibilidad_venta": 2,
+        "disponibilidad_recarga": 3
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "Medical service life Mesel",
+    "horario": "Lun a Vie 9:00 a 18:00 Sáb 9:00 a 15:00",
+    "estado": "Estado de México",
+    "direccion": "Isidro Fabela 40-58, Nativitas, 54900 Tultitlán de Mariano Escobedo, Méx.",
+    "ciudad": "Tultitlán de Mariano Escobedo",
+    "a_domicilio": false,
+    "pago_con_tarjeta": false,
+    "notas": "",
+    "telefono": "5558881204",
+    "ultima_actualizacion": "2021-01-23T06:32:10Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 40,
+        "disponibilidad_venta": 10
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 40,
+        "disponibilidad_venta": 2,
+        "disponibilidad_recarga": 6
+      }
+    ]
+  },
+  {
+    "nombre_distribuidor": "Super Medi-k",
+    "horario": "Lun a Vie de 10:00 a 19:00 Sáb a Dom de 11 a 17:00",
+    "estado": "CDMX",
+    "direccion": "Cali 714, Lindavista, Gustavo A. Madero, 07300 Ciudad de México, CDMX",
+    "ciudad": "Gustavo A. Madero",
+    "a_domicilio": false,
+    "pago_con_tarjeta": true,
+    "notas": "",
+    "telefono": "5557483033",
+    "ultima_actualizacion": "2021-01-23T06:34:39Z",
+    "concentradores": [
+      {
+        "disponibilidad_renta": 5,
+        "disponibilidad_venta": 8
+      }
+    ],
+    "tanques": [
+      {
+        "disponibilidad_renta": 40,
+        "disponibilidad_venta": 22,
+        "disponibilidad_recarga": 3
+      }
+    ]
+  }
+]
