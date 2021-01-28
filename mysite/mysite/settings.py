@@ -137,3 +137,6 @@ STATIC_URL = '/static/'
 print(os.path.join(BASE_DIR, 'oxigeno/static'))
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
+
+
+SECURE_CONTENT_TYPE_NOSNIFF = False
