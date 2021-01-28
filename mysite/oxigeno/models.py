@@ -19,7 +19,12 @@ class Distribuidor(models.Model):
     link_pagina = models.CharField(max_length=100, null=True, blank=True)        
     address = map_fields.AddressField(max_length=200, default='')
     geolocation = map_fields.GeoLocationField(max_length=100, default='')
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultima_actualizacion = models.DateTimeField(auto_now=True)
+
+    class Meta: 
+        verbose_name_plural = "distribuidores"
+
 
     def __str__(self):
         return self.nombre_distribuidor
@@ -29,12 +34,24 @@ class Tanque(models.Model):
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
     disponibilidad_recarga = models.IntegerField()
+    ultima_actualizacion = models.DateTimeField(auto_now=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+
     def __str__(self):
-        return "Tanque- " + self.distribuidor.nombre_distribuidor
+        return "Tanque - " + self.distribuidor.nombre_distribuidor
 
 class Concentrador(models.Model):
     distribuidor = models.ForeignKey(Distribuidor, on_delete=models.CASCADE)
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
+    ultima_actualizacion = models.DateTimeField(auto_now=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+
     def __str__(self):
-        return "Concentrador- " + self.distribuidor.nombre_distribuidor
+        return "Concentrador - " + self.distribuidor.nombre_distribuidor
+
+    
+    class Meta: 
+        verbose_name_plural = "concentradores"
