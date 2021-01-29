@@ -8,7 +8,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=MyWeirdPass!
     volumes:
-      - /home/oxigenocc/data/:/var/lib/postgresql/data
+      - /home/oxigenocc/db-data/:/var/lib/postgresql/data
   web:
     restart: always
     build: .
