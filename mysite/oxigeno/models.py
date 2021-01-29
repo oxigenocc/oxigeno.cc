@@ -7,6 +7,7 @@ from simple_history.models import HistoricalRecords
 
 
 class Distribuidor(models.Model):
+    id = models.AutoField(primary_key=True)
     nombre_distribuidor = models.CharField(max_length=100)
     horario = models.CharField(max_length=100)
     estado = models.CharField(max_length=50)
@@ -32,6 +33,7 @@ class Distribuidor(models.Model):
         return self.nombre_distribuidor
 
 class Tanque(models.Model):
+    id = models.AutoField(primary_key=True)
     distribuidor = models.ForeignKey(Distribuidor, on_delete=models.CASCADE)
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
@@ -45,6 +47,7 @@ class Tanque(models.Model):
         return "Tanque - " + self.distribuidor.nombre_distribuidor
 
 class Concentrador(models.Model):
+    id = models.AutoField(primary_key=True)
     distribuidor = models.ForeignKey(Distribuidor, on_delete=models.CASCADE)
     disponibilidad_renta = models.IntegerField()
     disponibilidad_venta = models.IntegerField()
