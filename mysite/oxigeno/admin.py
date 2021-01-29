@@ -8,7 +8,7 @@ from simple_history.admin import SimpleHistoryAdmin
 # Register your models here.
 from .models import Distribuidor, Tanque, Concentrador
 
-class DistribuidorAdmin(admin.ModelAdmin):
+class DistribuidorAdmin(SimpleHistoryAdmin):
     formfield_overrides = {
         map_fields.AddressField: {'widget': map_widgets.GoogleMapsAddressWidget(attrs={
             'data-autocomplete-options': json.dumps({ 'types': 
@@ -20,6 +20,6 @@ class DistribuidorAdmin(admin.ModelAdmin):
       })},
     }
 
-admin.site.register(Distribuidor, DistribuidorAdmin, SimpleHistoryAdmin)
+admin.site.register(Distribuidor, DistribuidorAdmin)
 admin.site.register(Tanque, SimpleHistoryAdmin)
 admin.site.register(Concentrador, SimpleHistoryAdmin)
