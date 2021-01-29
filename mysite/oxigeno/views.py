@@ -8,6 +8,16 @@ import pytz
 from .models import Distribuidor, Tanque, Concentrador
 
 
+def sort_by_availability(dist):
+    values = []
+    for t in dist['tanques']:
+        values += t.values()
+    for c in dist['concentradores']:
+        values += c.values()
+    return max(values)
+
+
+
 def rest_get(request):
     distribuidores = Distribuidor.objects.all()
     resp = []
@@ -49,4 +59,7 @@ def rest_get(request):
             'lng': location[1],
         }
         resp.append(data)
+    data.sort(key=sort_by_availability)
     return JsonResponse(resp, safe=False)
+
+
