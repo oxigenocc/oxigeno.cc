@@ -2,6 +2,7 @@
 
 Sistema de reportes de disponibilidad de oxigeno en la CDMX
 
+
 # Generación de certificado y configuración de NGINX en Ubuntu 20 LTS
 
 [Instalar certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)
@@ -109,3 +110,20 @@ user@server:~$ # Correr el test de las configuraciones y recargarlas
 user@server:~$ sudo nginx -t
 user@server:~$ sudo nginx -s reload
 ```
+
+
+
+Contribuidores:
+* @klaymond
+* @dstprojects
+* @lorenzoajt 
+* @AlexisFlores17
+
+Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. El apoyo de las siguintes personas e instituciones fue indispensable:
+* Diana Urquiza
+* Mauro Herrera
+* Mijael Gutiérrez
+* LSD Lab
+* Agencia Digital de Innovació Pública de la CDMX
+* Tec de Monterrey
+

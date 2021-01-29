@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import  CardsGrid  from "./CardsGrid";
 import { MenuLateral } from "./MenuLateral";
-import { useSelector } from "react-redux";
+
 
 
 export const MainContent = () =>{
