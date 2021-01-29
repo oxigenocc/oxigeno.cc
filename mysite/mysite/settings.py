@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oxigeno.apps.OxigenoConfig',
-    'django_google_maps'
+    'django_google_maps',
+    'simple_history',
 ]
 
 GOOGLE_MAPS_API_KEY = config('API_KEY')
@@ -53,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -60,7 +62,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static/oxigeno')],
+        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,6 +136,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-print(os.path.join(BASE_DIR, 'oxigeno/static'))
+STATIC_ROOT = '/home/oxigenocc/static'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
+
+
+SECURE_CONTENT_TYPE_NOSNIFF = False
