@@ -157,7 +157,7 @@ export default function MyCard(props) {
             </Col>
             <Col className="tel">
               <Card.Link href={`tel:${telefono}`}>{ 
-                telefono ===0 || telefono==="0"? "Llama a locatel: 56581111":telefono
+                telefono ===0 || telefono==="0"? "Llama a locatel: 5556581111":telefono
                 } </Card.Link>
             </Col>            
           </Row>          
