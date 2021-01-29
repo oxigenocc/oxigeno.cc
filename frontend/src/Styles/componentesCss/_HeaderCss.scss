@@ -57,6 +57,13 @@ $headerHeight: 270px;
     }
 }
 
+.HeaderLogoContainer{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px 0;
+}
+
 .HeaderContenedorTexto{  
     // background-color: skyblue;
     display: flex;  
@@ -66,9 +73,9 @@ $headerHeight: 270px;
     margin: 0 0 0 5%;
     .HeaderLogo{
         background-image: $imageLogoHEader;
+        display: inline-block;
         height: 70px;
         width: 80px;
-        margin-top: 10px;
         background-size: 100% 100%;
         @media ( max-width: 750px){
             height: 50px;
@@ -113,6 +120,22 @@ $headerHeight: 270px;
 a:hover {
     text-decoration: none;
     color: white;
+}
+
+.HeaderLocatel{
+    width: 180px;
+    height: 50px;
+    margin-left: 20px;
+    // background-image: url("./../../img/locatel.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    @media ( max-width: 750px){
+        height: 50px;
+        width: 120px;
+    }
 }
 
 .HeaderBotonesRedes{
