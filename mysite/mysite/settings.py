@@ -60,7 +60,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static/oxigeno')],
+        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,4 +136,9 @@ STATIC_URL = '/static/'
 
 print(os.path.join(BASE_DIR, 'oxigeno/static'))
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
+
+
+SECURE_CONTENT_TYPE_NOSNIFF = False
