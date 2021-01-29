@@ -22,7 +22,6 @@ class Distribuidor(models.Model):
     geolocation = map_fields.GeoLocationField(max_length=100, default='')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultima_actualizacion = models.DateTimeField(auto_now=True)
-    history = HistoricalRecords()
 
     class Meta: 
         verbose_name_plural = "distribuidores"
