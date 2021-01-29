@@ -12,6 +12,7 @@ export default function CardsGrid(props) {
   const [filteredData, setFilteredData] = useState(data);
   
   const endPoint = window.location.href + "data";
+
   // console.log(endPoint);
   useEffect(() => {
     async function getData() {
@@ -44,19 +45,19 @@ export default function CardsGrid(props) {
         newData = newData.filter(distribuidor => distribuidor.pago_con_tarjeta === true)
       }
       if(state.tanqueVenta){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_venta > 0)
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_venta > 0)
       }
       if(state.tanqueRenta){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_renta > 0)
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_renta > 0)
       }
       if(state.tanqueRecarga){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0].disponibilidad_recarga > 0)
+        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_recarga > 0)
       }
       if(state.concentradorRenta){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_renta > 0)
+        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_renta > 0)
       }
       if(state.concentradorVenta){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0].disponibilidad_venta > 0)
+        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_venta > 0)
       }
 
       setFilteredData(newData)
