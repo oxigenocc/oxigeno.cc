@@ -59,7 +59,7 @@ def rest_get(request):
             'lng': location[1],
         }
         resp.append(data)
-    data.sort(key=sort_by_availability)
+    resp.sort(key=sort_by_availability)
     return JsonResponse(resp, safe=False)
 
 
