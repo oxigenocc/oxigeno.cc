@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'oxigeno.apps.OxigenoConfig',
     'django_google_maps',
     'simple_history',
+    'django.contrib.sites',
+    'django.contrib.redirects',
 ]
+
+SITE_ID = 1
 
 GOOGLE_MAPS_API_KEY = config('API_KEY')
 
@@ -55,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'simple_history.middleware.HistoryRequestMiddleware',
+    'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
