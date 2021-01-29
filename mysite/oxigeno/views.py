@@ -14,7 +14,11 @@ def sort_by_availability(dist):
         values += t.values()
     for c in dist['concentradores']:
         values += c.values()
-    return max(values)
+    if values:
+        ret = max(values)
+    else:
+        ret = 0
+    return ret
 
 
 
