@@ -15,7 +15,7 @@ class DistribuidorAdmin(SimpleHistoryAdmin):
     def get_form(self, request, obj=None, **kwargs):
         self.exclude = []
         if not request.user.is_superuser:
-            self.exclude.append('Notas') #here!
+            self.exclude.append('notas') #here!
         return super(DistribuidorAdmin, self).get_form(request, obj, **kwargs)
 
     formfield_overrides = {

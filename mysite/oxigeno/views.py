@@ -30,7 +30,7 @@ def rest_get(request):
         max_concentrador = max(concentrador.ultima_actualizacion for concentrador in d.concentrador_set.all()) if d.concentrador_set.all() else dt.min.replace(tzinfo=pytz.UTC)
         ultima_actualización = max([d.ultima_actualizacion, max_tanque, max_concentrador]) 
 
-        location = d.geolocation.split(',')
+        location = str(d.geolocation).split(',')
 
         data = {
             'nombre_distribuidor': d.nombre_distribuidor,
