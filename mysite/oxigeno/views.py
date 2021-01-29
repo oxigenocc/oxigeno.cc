@@ -8,12 +8,6 @@ import pytz
 from .models import Distribuidor, Tanque, Concentrador
 
 
-def index(request):
-    pass
-    # template = loader.get_template('index')
-    # context = {}
-    # return HttpResponse(template.render(context, request))
-
 def rest_get(request):
     distribuidores = Distribuidor.objects.all()
     resp = []
@@ -34,10 +28,9 @@ def rest_get(request):
 
         max_tanque = max(tanque.ultima_actualizacion for tanque in d.tanque_set.all()) if d.tanque_set.all() else dt.min.replace(tzinfo=pytz.UTC)
         max_concentrador = max(concentrador.ultima_actualizacion for concentrador in d.concentrador_set.all()) if d.concentrador_set.all() else dt.min.replace(tzinfo=pytz.UTC)
-        print(max_tanque)
-        print(max_concentrador)
-        print(d.ultima_actualizacion)
         ultima_actualización = max([d.ultima_actualizacion, max_tanque, max_concentrador]) 
+
+        location = str(d.geolocation).split(',')
 
         data = {
             'nombre_distribuidor': d.nombre_distribuidor,
@@ -51,7 +44,9 @@ def rest_get(request):
             'telefono': d.telefono,
             'ultima_actualizacion': ultima_actualización,
             'concentradores': concentradores,
-            'tanques': tanques
+            'tanques': tanques,
+            'lat': location[0],
+            'lng': location[1],
         }
         resp.append(data)
     return JsonResponse(resp, safe=False)
