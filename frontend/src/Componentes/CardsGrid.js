@@ -39,6 +39,7 @@ export default function CardsGrid(props) {
       let newData = data;
       
       if(state.domicilioSwitch){
+        if( newData.distribuidor)
         newData = newData.filter(distribuidor => distribuidor.a_domicilio === true)
       } 
       if(state.tarjetaSwitch){
@@ -70,7 +71,7 @@ export default function CardsGrid(props) {
       { 
         filteredData.map((distribuidor) =>
           <MyCard 
-            key={distribuidor.nombre_distribuidor}
+            key={`${distribuidor.nombre_distribuidor}${distribuidor.telefono}`}
             distribuidor = {distribuidor}
           />
         ) 
