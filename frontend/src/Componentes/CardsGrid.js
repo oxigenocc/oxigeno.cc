@@ -17,7 +17,8 @@ export default function CardsGrid(props) {
     async function getData() {
       try {
         const dataPeticion = await fetch(endPoint);
-        setData(dataPeticion);
+        const dataBase= await dataPeticion.json();
+        setData(dataBase);
         setCargado(2);
         // console.log("Success");
         // console.log(dataPeticion);
