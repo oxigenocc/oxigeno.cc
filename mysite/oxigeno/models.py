@@ -1,5 +1,6 @@
 from django.db import models
 from django_google_maps import fields as map_fields
+from simple_history.models import HistoricalRecords
 
 
 # Create your models here.
@@ -21,6 +22,7 @@ class Distribuidor(models.Model):
     geolocation = map_fields.GeoLocationField(max_length=100, default='')
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultima_actualizacion = models.DateTimeField(auto_now=True)
+    history = HistoricalRecords()
 
     class Meta: 
         verbose_name_plural = "distribuidores"
@@ -36,6 +38,7 @@ class Tanque(models.Model):
     disponibilidad_recarga = models.IntegerField()
     ultima_actualizacion = models.DateTimeField(auto_now=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    history = HistoricalRecords()
 
 
     def __str__(self):
@@ -47,6 +50,7 @@ class Concentrador(models.Model):
     disponibilidad_venta = models.IntegerField()
     ultima_actualizacion = models.DateTimeField(auto_now=True)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    history = HistoricalRecords()
 
 
     def __str__(self):
