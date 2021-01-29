@@ -167,11 +167,7 @@
       }
     ],
     "tanques": [
-      {
-        "disponibilidad_renta": 4,
-        "disponibilidad_venta": 2,
-        "disponibilidad_recarga": 3
-      }
+      
     ]
   },
   {
