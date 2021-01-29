@@ -14,7 +14,11 @@ def sort_by_availability(dist):
         values += t.values()
     for c in dist['concentradores']:
         values += c.values()
-    return max(values)
+    if values:
+        ret = max(values)
+    else:
+        ret = 0
+    return ret
 
 
 
@@ -59,7 +63,7 @@ def rest_get(request):
             'lng': location[1],
         }
         resp.append(data)
-    data.sort(key=sort_by_availability)
+    resp.sort(key=sort_by_availability)
     return JsonResponse(resp, safe=False)
 
 
