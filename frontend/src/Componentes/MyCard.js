@@ -5,16 +5,18 @@ import Col from 'react-bootstrap/Col';
 import Badge from 'react-bootstrap/Badge';
 import CloseIcon from '@material-ui/icons/Close';
 import CheckIcon from '@material-ui/icons/Check';
-import {dateFormat} from '../helpers/dateFormat'
+import {dateFormat} from '../helpers/dateFormat';
+
 
 
 export default function MyCard(props) { 
+
   const {
     nombre_distribuidor,
     horario,
-    estado,
+    // estado,
     direccion,
-    ciudad,
+    // ciudad,
     a_domicilio,
     pago_con_tarjeta,
     notas,
@@ -22,30 +24,67 @@ export default function MyCard(props) {
     ultima_actualizacion,
     concentradores,
     tanques,
+    lat,
+    lng
   }= props.distribuidor
 
-  let tanques_renta = tanques[0].disponibilidad_renta
-  let tanques_venta = tanques[0].disponibilidad_venta
-  let tanques_recarga = tanques[0].disponibilidad_recarga
+  const latMapa= lat? lat:"";
+  const lngMapa=lng? lng :"";
+
+  let tanques_renta;
+
+  if ( Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_renta !== undefined ) {
+    tanques_renta=tanques[0].disponibilidad_renta 
+  }else{
+    tanques_renta=-1;
+  }; 
+
+  let tanques_venta;
+
+  if (  Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_venta !== undefined) {
+    tanques_venta=tanques[0].disponibilidad_venta
+  }else{
+    tanques_venta=-1;
+  }; 
+
+  let tanques_recarga;
+
+  if (  Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_recarga !== undefined) {
+    tanques_recarga = tanques[0].disponibilidad_recarga;
+  }else{
+    tanques_recarga=-1;
+  }
   
-  let concentradores_renta = concentradores[0].disponibilidad_renta
-  let concentradores_venta = concentradores[0].disponibilidad_venta
+  let concentradores_renta;
+  if ( Object.keys(concentradores).length !==0 &&  typeof concentradores[0].disponibilidad_renta !== undefined) {
+    concentradores_renta = concentradores[0].disponibilidad_renta;
+  }else{
+    concentradores_renta= -1;
+  }
+
+  let concentradores_venta;
+
+  if ( Object.keys(concentradores).length !==0 &&typeof concentradores[0].disponibilidad_venta !== undefined) {
+    concentradores_venta  = concentradores[0].disponibilidad_venta;
+  }else{
+    concentradores_venta= -1;
+  }
   
   
 
   function disponibilidadPicker(tanques) {
     let disponibilidad
-    if(tanques == 0){
-      disponibilidad = <Badge variant="secondary">Sin Disponibilidad{tanques}</Badge>
+    if(tanques === 0){
+      disponibilidad = <Badge variant="secondary">Sin Disponibilidad</Badge>
     }
     else if(tanques > 0 &&  tanques <= 5){
-      disponibilidad = <Badge variant="danger">Baja{tanques}</Badge>
+      disponibilidad = <Badge variant="danger">Baja</Badge>
     }
     else if(tanques > 5 &&  tanques <= 10){
-      disponibilidad = <Badge variant="warning">Media{tanques}</Badge>
+      disponibilidad = <Badge variant="warning">Media</Badge>
     }
     else if(tanques > 10){
-      disponibilidad = <Badge variant="success">Alta{tanques}</Badge>
+      disponibilidad = <Badge variant="success">Alta</Badge>
     }
     else{
       disponibilidad = <Badge variant="dark">Sin Información</Badge>
@@ -115,10 +154,10 @@ export default function MyCard(props) {
         <Container className="mycard-footer">          
           <Row>
             <Col className="map">            
-              <Card.Link href="#" >Mapa</Card.Link>
+              <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
             </Col>
             <Col className="tel">
-              <Card.Link href="#">{telefono}</Card.Link>
+              <Card.Link href={`tel:${telefono}`}>{telefono}</Card.Link>
             </Col>            
           </Row>          
         </Container>                      
