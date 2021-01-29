@@ -4,4 +4,5 @@ WORKDIR /mysite
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY mysite/ .
+COPY mysite/static ./static/
 COPY .env .
