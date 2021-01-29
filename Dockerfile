@@ -4,5 +4,5 @@ WORKDIR /mysite
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY mysite/ .
-RUN manage.py collectstatic --noinput
+RUN python manage.py collectstatic --noinput
 COPY .env .
