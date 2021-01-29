@@ -30,7 +30,6 @@ export default function MyCard(props) {
 
   const latMapa= lat? lat:"";
   const lngMapa=lng? lng :"";
-
   let tanques_renta;
 
   if ( Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_renta !== undefined ) {
@@ -157,7 +156,9 @@ export default function MyCard(props) {
               <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
             </Col>
             <Col className="tel">
-              <Card.Link href={`tel:${telefono}`}>{telefono}</Card.Link>
+              <Card.Link href={`tel:${telefono}`}>{ 
+                telefono ===0 || telefono==="0"? "Llama a locatel: 56581111":telefono
+                } </Card.Link>
             </Col>            
           </Row>          
         </Container>                      
