@@ -10,12 +10,14 @@ from .models import Distribuidor, Tanque, Concentrador
 
 
 class DistribuidorAdmin(SimpleHistoryAdmin):
+
+    
     def get_form(self, request, obj=None, **kwargs):
         self.exclude = []
         if not request.user.is_superuser:
             self.exclude.append('Notas') #here!
-        return super(MyUserAdmin, self).get_form(request, obj, **kwargs)
-        
+        return super(DistribuidorAdmin, self).get_form(request, obj, **kwargs)
+
     formfield_overrides = {
         map_fields.AddressField: {'widget': map_widgets.GoogleMapsAddressWidget(attrs={
             'data-autocomplete-options': json.dumps({ 'types': 
