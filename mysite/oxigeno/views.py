@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.db.models import Max
+from django.http import Http404
 import pytz
 
 from .models import Distribuidor, Tanque, Concentrador
@@ -23,7 +24,7 @@ def sort_by_availability(dist):
 
 
 def rest_get(request):
-    distribuidores = Distribuidor.objects.all()
+    distribuidores = filter_distribuidores(request.GET)
     resp = []
     for d in distribuidores:
         tanques = [
@@ -67,3 +68,33 @@ def rest_get(request):
     return JsonResponse(resp, safe=False)
 
 
+
+def filter_distribuidores(q_params):
+    d = Distribuidor.objects.all()
+    if not q_params:
+        return d
+    if not d:
+        return []
+    if 'tanqueVenta' in q_params:
+        if int(q_params['tanqueVenta']):
+            d = d.filter(tanque__disponibilidad_venta__gt=0).distinct()
+    if 'tanqueRecarga' in q_params:
+        if int(q_params['tanqueRecarga']):
+            d = d.filter(tanque__disponibilidad_recarga__gt=0).distinct()
+    if 'tanqueRenta' in q_params:
+        if int(q_params['tanqueRenta']):
+            d = d.filter(tanque__disponibilidad_renta__gt=0).distinct()
+    if 'concentradorVenta' in q_params:
+        if int(q_params['concentradorVenta']):
+            d = d.filter(concentrador__disponibilidad_venta__gt=0).distinct()
+    if 'concentradorRenta' in q_params:
+        if int(q_params['concentradorRenta']):
+            d = d.filter(concentrador__disponibilidad_renta__gt=0).distinct()
+    if 'pagoConTarjeta' in q_params:
+        if int(q_params['pagoConTarjeta']):
+            d = d.filter(distribuidor__pago_con_tarjeta=True).distinct()
+    if 'aDomicilio' in  q_params:
+        if int(q_params['aDomicilio']):
+            d = d.filter(distribuidor__a_domicilio=True).distinct()
+    return d
+    

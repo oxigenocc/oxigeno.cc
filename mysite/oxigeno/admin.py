@@ -40,6 +40,27 @@ class DistribuidorAdmin(SimpleHistoryAdmin):
       })},
     }
 
+
+class TanqueAdmin(SimpleHistoryAdmin):
+    
+    
+    def get_form(self, request, obj=None, **kwargs):
+        self.exclude = []
+        if not request.user.is_superuser:
+            self.exclude.append('distribuidor')
+        return super(TanqueAdmin, self).get_form(request, obj, **kwargs)
+
+
+class ConcentradorAdmin(SimpleHistoryAdmin):
+    
+    
+    def get_form(self, request, obj=None, **kwargs):
+        self.exclude = []
+        if not request.user.is_superuser:
+            self.exclude.append('distribuidor')
+        return super(ConcentradorAdmin, self).get_form(request, obj, **kwargs)
+
+
 admin.site.register(Distribuidor, DistribuidorAdmin)
-admin.site.register(Tanque, SimpleHistoryAdmin)
-admin.site.register(Concentrador, SimpleHistoryAdmin)
+admin.site.register(Tanque, TanqueAdmin)
+admin.site.register(Concentrador, ConcentradorAdmin)
