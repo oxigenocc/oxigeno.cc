@@ -66,6 +66,8 @@ def rest_get(request):
             'tanques': tanques,
             'lat': location[0],
             'lng': location[1],
+            'whatsapp': d.whatsapp,
+            'link_pagina': d.link_pagina
         }
         dist_list.append(data)
     dist_list.sort(reverse=True, key=sort_by_availability)
