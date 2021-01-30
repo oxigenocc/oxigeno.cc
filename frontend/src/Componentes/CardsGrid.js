@@ -28,11 +28,11 @@ export default function CardsGrid(props) {
             aDomicilio: state.domicilioSwitch ? 1 : 0
           }
         });
-        const dataBase= await dataPeticion.json();
+        const dataBase= await dataPeticion.data;
         setData(dataBase);
         setCargado(2);
-        console.log(dataPeticion);
       } catch (error) {
+        console.log(error)
         setCargado(0);
       }
     }
