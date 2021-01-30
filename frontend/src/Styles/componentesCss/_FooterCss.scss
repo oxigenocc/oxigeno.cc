@@ -59,6 +59,7 @@
 
 .footer{
     // background-color: royalblue;
+
     margin-top: 15px;
     display: flex;
     flex-flow: row wrap;
@@ -83,17 +84,33 @@
 }
 
 .copyOxigeno{
+    display: flex;
+    align-items: center;
     color: rgba($color: #188AFC, $alpha: 0.9);
     width: 50%;
     @media ( max-width: 500px){
         width: 100%;
         text-align: center;
+        justify-content: center;
         margin-bottom: 10px;
     }
 }
 .refLsd{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-end;
     width: 50%;
-    text-align: right;
+    text-align: left;
+    @media ( max-width: 766px){
+        text-align: right;   
+    }
+    @media ( max-width: 501px){
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;          
+    }
+
     @media ( max-width: 500px){
         width: 100%;
         text-align: center;
@@ -106,5 +123,29 @@
     
     a:hover{
             color: rgba($color: #7d1cca, $alpha: 0.9);
+    }
+    .contenedorImagen{
+        margin-left: 10px;
+        min-width: 30px;
+        min-height: 30px;
+        @media ( max-width: 501px){
+            margin-top: 10px;         
+        }
+        @media ( max-width: 376px){
+            min-width: 40px;
+            min-height: 40px;
+        }
+        @media ( max-width: 281px){
+            min-width: 30px;
+            min-height: 30px;
+        }  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .imgLogoFooter{
+            width: 30px;
+            height: 30px;
+        }
+
     }
 }

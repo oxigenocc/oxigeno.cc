@@ -16,6 +16,28 @@
 
 }
 
+.sinResultados{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  .cajaSinResultados{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 150px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    background-color: rgba($color: gray, $alpha: 0.4);
+    font-size: 20px;
+    text-align: center;
+    color: black;
+    margin-bottom: 50px ;
+  }
+}
+
 .error{
   display: flex;
   flex-flow: row wrap;

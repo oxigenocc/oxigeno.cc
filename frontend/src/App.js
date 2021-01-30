@@ -11,9 +11,11 @@ function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <Header />
-        <Buscador />
-        <MainContent />
+        <div className="pageContainer">
+          <Header />
+          <Buscador />
+          <MainContent />
+        </div>
         <Footer />
       </Provider>
 
