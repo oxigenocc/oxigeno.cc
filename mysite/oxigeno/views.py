@@ -71,13 +71,13 @@ def rest_get(request):
     dist_list.sort(reverse=True, key=sort_by_availability)
     if 'page' in params:
         if params['page'].isnumeric():
-            p = Paginator(dist_list, int(params['totalPages']))
+            p = Paginator(dist_list, int(params['perPage']))
             page = p.page(int(params['page']))
             resp = {
                 "links": link_obj_maker(params, page, p, config('DEBUG')),
                 "indice": page.end_index(),
                 "total": p.count,
-                "distribuidores": dist_list
+                "distribuidores": page.object_list
             }
         else:
             return HttpResponseBadRequest("Page number is not numeric")
