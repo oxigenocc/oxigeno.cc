@@ -48,7 +48,7 @@ def rest_get(request):
         location = str(d.geolocation).split(',')
 
         data = {
-            'id': d.id
+            'id': d.id,
             'nombre_distribuidor': d.nombre_distribuidor,
             'horario': d.horario,
             'estado': d.estado,
