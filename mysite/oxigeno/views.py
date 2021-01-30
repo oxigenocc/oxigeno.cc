@@ -76,25 +76,25 @@ def filter_distribuidores(q_params):
     if not d:
         return []
     if 'tanqueVenta' in q_params:
-        if q_params['tanqueVenta']:
+        if int(q_params['tanqueVenta']):
             d = d.filter(tanque__disponibilidad_venta__gt=0).distinct()
     if 'tanqueRecarga' in q_params:
-        if q_params['tanqueRecarga']:
+        if int(q_params['tanqueRecarga']):
             d = d.filter(tanque__disponibilidad_recarga__gt=0).distinct()
     if 'tanqueRenta' in q_params:
-        if q_params['tanqueRenta']:
+        if int(q_params['tanqueRenta']):
             d = d.filter(tanque__disponibilidad_renta__gt=0).distinct()
     if 'concentradorVenta' in q_params:
-        if q_params['concentradorVenta']:
+        if int(q_params['concentradorVenta']):
             d = d.filter(concentrador__disponibilidad_venta__gt=0).distinct()
     if 'concentradorRenta' in q_params:
-        if q_params['concentradorRenta']:
+        if int(q_params['concentradorRenta']):
             d = d.filter(concentrador__disponibilidad_renta__gt=0).distinct()
     if 'pagoConTarjeta' in q_params:
-        if q_params['pagoConTarjeta']:
+        if int(q_params['pagoConTarjeta']):
             d = d.filter(distribuidor__pago_con_tarjeta=True).distinct()
     if 'aDomicilio' in  q_params:
-        if q_params['aDomicilio']:
+        if int(q_params['aDomicilio']):
             d = d.filter(distribuidor__a_domicilio=True).distinct()
     return d
     
