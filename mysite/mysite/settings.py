@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'simple_history',
     'django.contrib.sites',
     'django.contrib.redirects',
+    'corsheaders',
 ]
 
 SITE_ID = 1
@@ -61,6 +62,13 @@ MIDDLEWARE = [
     'simple_history.middleware.HistoryRequestMiddleware',
     'django.contrib.redirects.middleware.RedirectFallbackMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',  
+    'django.middleware.common.CommonMiddleware', 
+)
+
+CORS_ORIGIN_ALLOW_ALL = True 
 
 ROOT_URLCONF = 'mysite.urls'
 
