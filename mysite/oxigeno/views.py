@@ -71,7 +71,7 @@ def rest_get(request):
     dist_list.sort(reverse=True, key=sort_by_availability)
     if 'page' in params:
         if params['page'].isnumeric():
-            p = Paginator(dist_list, int(params['page']))
+            p = Paginator(dist_list, int(params['totalPages']))
             page = p.page(int(params['page']))
             resp = {
                 "links": link_obj_maker(params, page, p, config('DEBUG')),
