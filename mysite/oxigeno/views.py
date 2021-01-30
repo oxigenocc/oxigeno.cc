@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponseBadRequest
+from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.db.models import Max
 from django.core.paginator import Paginator
@@ -72,7 +72,9 @@ def rest_get(request):
     if 'page' in params and 'perPage' in params:
         if params['page'].isnumeric() and params['perPage'].isnumeric():
             if int(params['page']) <= 0 or int(params['perPage']) <= 0:
-                return HttpResponseBadRequest("Page number or perPage is less than or equal to 0")
+                return JsonResponse({"message": "Page number or perPage is less than or equal to 0"}, status=400)
+            if int(params['page']) > p.num_pages:
+                return JsonResponse({"message": "Page number is greater than amount of pages."}, status=404)
             p = Paginator(dist_list, int(params['perPage']))
             page = p.page(int(params['page']))
             resp = {
@@ -82,7 +84,7 @@ def rest_get(request):
                 "distribuidores": page.object_list
             }
         else:
-            return HttpResponseBadRequest("Page number or perPage value is not numeric")
+            return JsonResponse({"message": "Page number or perPage value is not numeric"}, status=400)
     else:
         resp = {
                     "links": None,
