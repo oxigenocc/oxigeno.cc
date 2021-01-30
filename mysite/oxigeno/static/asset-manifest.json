@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.80170c52.chunk.css",
-    "main.js": "/static/js/main.54baab54.chunk.js",
-    "main.js.map": "/static/js/main.54baab54.chunk.js.map",
+    "main.css": "/static/css/main.b8c9d9f1.chunk.css",
+    "main.js": "/static/js/main.62127bad.chunk.js",
+    "main.js.map": "/static/js/main.62127bad.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.20172afa.js",
     "runtime-main.js.map": "/static/js/runtime-main.20172afa.js.map",
     "static/css/2.74fc6e00.chunk.css": "/static/css/2.74fc6e00.chunk.css",
@@ -10,19 +10,20 @@
     "static/js/2.fff4fe09.chunk.js.map": "/static/js/2.fff4fe09.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.74fc6e00.chunk.css.map": "/static/css/2.74fc6e00.chunk.css.map",
-    "static/css/main.80170c52.chunk.css.map": "/static/css/main.80170c52.chunk.css.map",
+    "static/css/main.b8c9d9f1.chunk.css.map": "/static/css/main.b8c9d9f1.chunk.css.map",
     "static/js/2.fff4fe09.chunk.js.LICENSE.txt": "/static/js/2.fff4fe09.chunk.js.LICENSE.txt",
     "static/media/advertencia.dcd326ae.png": "/static/media/advertencia.dcd326ae.png",
     "static/media/imagen 1.877405d8.png": "/static/media/imagen 1.877405d8.png",
     "static/media/imagen 2.ab324729.png": "/static/media/imagen 2.ab324729.png",
     "static/media/indexCss.scss": "/static/media/logoOxigenoCC.e356f4d9.PNG",
-    "static/media/locatel.f6ce4b00.png": "/static/media/locatel.f6ce4b00.png"
+    "static/media/locatel.f6ce4b00.png": "/static/media/locatel.f6ce4b00.png",
+    "static/media/logoLight.f2bf798b.png": "/static/media/logoLight.f2bf798b.png"
   },
   "entrypoints": [
     "static/js/runtime-main.20172afa.js",
     "static/css/2.74fc6e00.chunk.css",
     "static/js/2.fff4fe09.chunk.js",
-    "static/css/main.80170c52.chunk.css",
-    "static/js/main.54baab54.chunk.js"
+    "static/css/main.b8c9d9f1.chunk.css",
+    "static/js/main.62127bad.chunk.js"
   ]
 }

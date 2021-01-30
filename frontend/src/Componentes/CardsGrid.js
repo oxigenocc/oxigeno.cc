@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MyCard from "./MyCard.js"
 import {useSelector} from "react-redux";
-// import data from "../img/data.json";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 
@@ -11,6 +10,7 @@ export default function CardsGrid(props) {
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
   const state = useSelector( state => state.filtrosAvanzados );  
   
+  // const endPoint ="https://dev-oxigeno.cdmx.gob.mx/oxigeno/data";
   const endPoint = window.location.href + "data";
 
   useEffect(() => {
@@ -45,12 +45,18 @@ export default function CardsGrid(props) {
     return (
       <div className="tarjetas-container col-12 col-md-9" >
       { 
+      data.length >0 ?
         data.map((distribuidor) =>
           <MyCard 
             key={`${distribuidor.id}`}
             distribuidor = {distribuidor}
           />
-        ) 
+        ) :
+        <div className="sinResultados">
+          <div className="cajaSinResultados">
+            No se encontraron resultados con estos filtros
+          </div>
+        </div>
 
       } 
       </div>
