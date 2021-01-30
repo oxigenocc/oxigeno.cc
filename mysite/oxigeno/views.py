@@ -69,8 +69,10 @@ def rest_get(request):
         }
         dist_list.append(data)
     dist_list.sort(reverse=True, key=sort_by_availability)
-    if 'page' in params:
-        if params['page'].isnumeric():
+    if 'page' in params and 'perPage':
+        if params['page'].isnumeric() and params['perPage'].isnumeric():
+            if int(params['page']) <= 0 and int(params['perPage']) <= 0:
+                return HttpResponseBadRequest("Page number or perPage is less than or equal to 0")
             p = Paginator(dist_list, int(params['perPage']))
             page = p.page(int(params['page']))
             resp = {
@@ -80,7 +82,7 @@ def rest_get(request):
                 "distribuidores": page.object_list
             }
         else:
-            return HttpResponseBadRequest("Page number is not numeric")
+            return HttpResponseBadRequest("Page number or perPage value is not numeric")
     else:
         resp = {
                     "links": None,
