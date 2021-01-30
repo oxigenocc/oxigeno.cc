@@ -47,7 +47,7 @@ export default function CardsGrid(props) {
       { 
         data.map((distribuidor) =>
           <MyCard 
-            key={`${distribuidor.nombre_distribuidor}${distribuidor.telefono}`}
+            key={`${distribuidor.id}`}
             distribuidor = {distribuidor}
           />
         ) 
