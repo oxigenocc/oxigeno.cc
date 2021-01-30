@@ -3,73 +3,49 @@ import MyCard from "./MyCard.js"
 import {useSelector} from "react-redux";
 // import data from "../img/data.json";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import axios from 'axios';
 
 
 export default function CardsGrid(props) { 
   const [data, setData] = useState([]); 
   const [cargado, setCargado] = useState(1); // 0 = error, 1 = cargando, 2 = success
   const state = useSelector( state => state.filtrosAvanzados );  
-  const [filteredData, setFilteredData] = useState(data);
   
   const endPoint = window.location.href + "data";
 
-  // console.log(endPoint);
   useEffect(() => {
+    setCargado(1)
     async function getData() {
       try {
-        const dataPeticion = await fetch(endPoint);
+        const dataPeticion = await axios.get(endPoint,{
+          params:{
+            tanqueVenta: state.tanqueVenta ? 1 : 0,
+            tanqueRecarga: state.tanqueRecarga ? 1 : 0,
+            tanqueRenta: state.tanqueRenta ? 1 : 0,
+            concentradorVenta: state.concentradorVenta ? 1 : 0,
+            concentradorRenta: state.concentradorRenta ? 1 : 0,
+            pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
+            aDomicilio: state.domicilioSwitch ? 1 : 0
+          }
+        });
         const dataBase= await dataPeticion.json();
         setData(dataBase);
         setCargado(2);
-        // console.log("Success");
-        // console.log(dataPeticion);
+        console.log(dataPeticion);
       } catch (error) {
         setCargado(0);
-        // console.log("error")
       }
     }
     getData();
 
-  }, []);
+  }, [state]);
   
-  useEffect(() => {
-
-    if( cargado ===2 ){      
- 
-      let newData = data;
-      
-      if(state.domicilioSwitch){
-        if( newData.distribuidor)
-        newData = newData.filter(distribuidor => distribuidor.a_domicilio === true)
-      } 
-      if(state.tarjetaSwitch){
-        newData = newData.filter(distribuidor => distribuidor.pago_con_tarjeta === true)
-      }
-      if(state.tanqueVenta){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_venta > 0)
-      }
-      if(state.tanqueRenta){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_renta > 0)
-      }
-      if(state.tanqueRecarga){
-        newData = newData.filter(distribuidor => distribuidor.tanques[0]?.disponibilidad_recarga > 0)
-      }
-      if(state.concentradorRenta){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_renta > 0)
-      }
-      if(state.concentradorVenta){
-        newData = newData.filter(distribuidor => distribuidor.concentradores[0]?.disponibilidad_venta > 0)
-      }
-
-      setFilteredData(newData)
-    }
-  }, [state, cargado])
   
   if( cargado === 2 ){
     return (
       <div className="tarjetas-container col-12 col-md-9" >
       { 
-        filteredData.map((distribuidor) =>
+        data.map((distribuidor) =>
           <MyCard 
             key={`${distribuidor.nombre_distribuidor}${distribuidor.telefono}`}
             distribuidor = {distribuidor}
