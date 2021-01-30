@@ -92,9 +92,9 @@ def filter_distribuidores(q_params):
             d = d.filter(concentrador__disponibilidad_renta__gt=0).distinct()
     if 'pagoConTarjeta' in q_params:
         if int(q_params['pagoConTarjeta']):
-            d = d.filter(distribuidor__pago_con_tarjeta=True).distinct()
+            d = d.filter(pago_con_tarjeta=True).distinct()
     if 'aDomicilio' in  q_params:
         if int(q_params['aDomicilio']):
-            d = d.filter(distribuidor__a_domicilio=True).distinct()
+            d = d.filter(a_domicilio=True).distinct()
     return d
     
