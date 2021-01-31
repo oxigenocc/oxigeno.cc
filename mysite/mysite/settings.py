@@ -149,7 +149,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '~/static'
+STATIC_ROOT = config('STATIC_ROOT')
 
 #STATICFILES_DIRS = [os.path.join(BASE_DIR, 'oxigeno/static/')]
 
