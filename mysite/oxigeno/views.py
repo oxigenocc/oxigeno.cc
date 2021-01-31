@@ -3,7 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from django.db.models import Max
-from django.http import Http404
+from django.core.paginator import Paginator
+from django.core.exceptions import FieldError
+from decouple import config
 import pytz
 
 from .models import Distribuidor, Tanque, Concentrador
@@ -24,8 +26,9 @@ def sort_by_availability(dist):
 
 
 def rest_get(request):
-    distribuidores = filter_distribuidores(request.GET)
-    resp = []
+    params = request.GET
+    distribuidores = filter_distribuidores(params)
+    dist_list = []
     for d in distribuidores:
         tanques = [
             {
@@ -63,39 +66,112 @@ def rest_get(request):
             'tanques': tanques,
             'lat': location[0],
             'lng': location[1],
+            'whatsapp': d.whatsapp,
+            'link_pagina': d.link_pagina
         }
-        resp.append(data)
-    resp.sort(reverse=True, key=sort_by_availability)
+        dist_list.append(data)
+    dist_list.sort(reverse=True, key=sort_by_availability)
+    if 'page' in params and 'perPage' in params:
+        if params['page'].isnumeric() and params['perPage'].isnumeric():
+            if int(params['page']) <= 0 or int(params['perPage']) <= 0:
+                return JsonResponse({"message": "Page number or perPage is less than or equal to 0"}, status=400)
+            p = Paginator(dist_list, int(params['perPage']))
+            if int(params['page']) > p.num_pages:
+                return JsonResponse({"message": "Page number is greater than amount of pages."}, status=404)
+            page = p.page(int(params['page']))
+            resp = {
+                "links": link_obj_maker(params, page, p, config('DEBUG')),
+                "indice": page.end_index(),
+                "total": p.count,
+                "distribuidores": page.object_list
+            }
+        else:
+            return JsonResponse({"message": "Page number or perPage value is not numeric"}, status=400)
+    else:
+        resp = {
+                    "links": None,
+                    "indice": None,
+                    "total": None,
+                    "distribuidores": dist_list
+                }
     return JsonResponse(resp, safe=False)
 
 
-
-def filter_distribuidores(q_params):
+def filter_distribuidores(q):
     d = Distribuidor.objects.all()
-    if not q_params:
+    if not q:
         return d
     if not d:
         return []
-    if 'tanqueVenta' in q_params:
-        if int(q_params['tanqueVenta']):
+    if 'tanqueVenta' in q:
+        if not q['tanqueVenta'].isnumeric():
+            raise FieldError("tanqueVenta is not an int")
+        if int(q['tanqueVenta']):
             d = d.filter(tanque__disponibilidad_venta__gt=0).distinct()
-    if 'tanqueRecarga' in q_params:
-        if int(q_params['tanqueRecarga']):
+    if 'tanqueRecarga' in q:
+        if not q['tanqueRecarga'].isnumeric():
+            raise FieldError("tanqueRecarga is not an int")
+        if int(q['tanqueRecarga']):
             d = d.filter(tanque__disponibilidad_recarga__gt=0).distinct()
-    if 'tanqueRenta' in q_params:
-        if int(q_params['tanqueRenta']):
+    if 'tanqueRenta' in q:
+        if not q['tanqueRenta'].isnumeric():
+            raise FieldError("tanqueRenta is not an int")
+        if int(q['tanqueRenta']):
             d = d.filter(tanque__disponibilidad_renta__gt=0).distinct()
-    if 'concentradorVenta' in q_params:
-        if int(q_params['concentradorVenta']):
+    if 'concentradorVenta' in q:
+        if not q['concentradorVenta'].isnumeric():
+            raise FieldError("concentradorVenta is not an int")
+        if int(q['concentradorVenta']):
             d = d.filter(concentrador__disponibilidad_venta__gt=0).distinct()
-    if 'concentradorRenta' in q_params:
-        if int(q_params['concentradorRenta']):
+    if 'concentradorRenta' in q:
+        if not q['concentradorRenta'].isnumeric():
+            raise FieldError("concentradorRenta is not an int")
+        if int(q['concentradorRenta']):
             d = d.filter(concentrador__disponibilidad_renta__gt=0).distinct()
-    if 'pagoConTarjeta' in q_params:
-        if int(q_params['pagoConTarjeta']):
+    if 'pagoConTarjeta' in q:
+        if not q['pagoConTarjeta'].isnumeric():
+            raise FieldError("pagoConTarjeta is not an int")
+        if int(q['pagoConTarjeta']):
             d = d.filter(pago_con_tarjeta=True).distinct()
-    if 'aDomicilio' in  q_params:
-        if int(q_params['aDomicilio']):
+    if 'aDomicilio' in  q:
+        if not q['aDomicilio'].isnumeric():
+            raise FieldError("aDomicilio is not an int")
+        if int(q['aDomicilio']):
             d = d.filter(a_domicilio=True).distinct()
     return d
+
+
+def link_obj_maker(q, page, p, debug):
+    este = "https://oxigenocdmx.cc/oxigeno/data?" + q.urlencode() \
+            if not debug else "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data?" + q.urlencode()
+    prim = q.copy()
+    prim['page'] = 1
+    primero = "https://oxigenocdmx.cc/oxigeno/data?" + prim.urlencode() \
+            if not debug else "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data?" + prim.urlencode()
+    ult = q.copy()
+    ult['page'] = p.num_pages
+    ultimo = "https://oxigenocdmx.cc/oxigeno/data?" + ult.urlencode() \
+            if not debug else "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data?" + ult.urlencode()
+    if page.has_previous():
+        ant = q.copy()
+        ant['page'] = page.previous_page_number()
+        anterior = "https://oxigenocdmx.cc/oxigeno/data?" + ant.urlencode() \
+                if not debug else "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data?" + ant.urlencode()
+    else:
+        anterior = None
+    if page.has_next():
+        sig = q.copy()
+        sig['page'] = page.next_page_number()
+        siguiente = "https://oxigenocdmx.cc/oxigeno/data?" + sig.urlencode() \
+                if not debug else "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data?" + sig.urlencode()
+    else:
+        siguiente = None
+    
+    return {
+            "este": este,
+            "primero": primero,
+            "ultimo": ultimo,
+            "anterior": anterior,
+            "siguiente": siguiente
+    }
     

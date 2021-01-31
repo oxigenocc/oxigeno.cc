@@ -1,9 +1,52 @@
 # oxigeno.cc
 
-Sistema de reportes de disponibilidad de oxigeno en la CDMX
+Sistema de reportes de disponibilidad de oxigeno en la CDMX. Favor de reportar cualquier bug en la página de [issues](https://github.com/oxigenocc/oxigeno.cc/issues).
 
+## Usa nuestra API gratuita
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/90220cc63e76e5062bfd)
 
-# Generación de certificado y configuración de NGINX en Ubuntu 20 LTS
+## ¿Quieres replicar esta página en tu ciudad?
+En un servidor que redireccione el puerto 443 al 8000 instala [docker](https://docs.docker.com/engine/install/ubuntu/) y [docker-compose](https://docs.docker.com/compose/install/), crea un archivo docker-compose.yaml y pega lo siguiente:
+```
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mL2nGEh49hG!X # Cambia esta clave a una segura
+    volumes:
+      - /home/oxigenocc/data-db/:/var/lib/postgresql/data # Cambia oxigenocc por el nombre del usuario de tu host
+  web:
+    restart: always
+    image: oxigenocc/oxigeno.cc:latest
+    command: bash -c "./entrypoint.sh"
+    environment:
+      - SECRET_KEY=<secret_key> # Cambia esto por una generada aquí https://miniwebtool.com/django-secret-key-generator/
+      - API_KEY=<google_maps_api_key> # Cambia esto por tu API key de google maps
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=MyWeirdPass! # Cambia esta clave por la que pusiste arriba en POSTGRES_PASSWORD
+      - DB_HOST=db
+      - DB_PORT=5432
+      - ALLOWED_HOSTS=oxigenocdmx.cc,www.oxigenocdmx.cc # Cambia esto por el dominio que vas a usar en tu host
+      - DEBUG=False
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+```
+Copia los archivos dentro de la carpeta [static](static/) en el directorio `~/static` de tu servidor. Ahora sólo tienes que correr el siguiente comando y ay debe de funcionar la página:
+```bash
+docker-compose up -d
+```
+Cualquier problema con el despliegue lo puedes poner en [issues](https://github.com/oxigenocc/oxigeno.cc/issues).  
+Si no tienes un servidor ya configurado puedes seguir los pasos en la sección de [NGINX](#nginx)
+
+## NGINX
+### Generación de certificado y configuración de NGINX en Ubuntu 20 LTS
 
 [Instalar certbot](https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx)
 
@@ -47,7 +90,7 @@ user@server:~$ sudo mv /etc/nginx/nginx.conf{,.bk}
 user@server:~$ sudo vim /etc/nginx/nginx.conf
 ```
 
-[Copiar y pegar el contenido de aquí en "/etc/nginx/nginx.conf" y guarlo](conf/nginx.conf)
+Copiar y pegar el contenido de [aquí](conf/nginx.conf) en "/etc/nginx/nginx.conf" y guarlo
 
 ```bash
 user@server:~$ sudo vim /etc/nginx/conf.d/domain.conf
@@ -111,6 +154,17 @@ user@server:~$ sudo nginx -t
 user@server:~$ sudo nginx -s reload
 ```
 
+## Django
+### Modelos
+* Distribuidores:
+  - id:
+    * AutoField:
+      - primary_key=True
+  - nombre_distribuidor:
+    * CharField:
+      - max_length=100
+
+## Frontend
 
 
 Contribuidores:
@@ -118,6 +172,7 @@ Contribuidores:
 * @dstprojects
 * @lorenzoajt 
 * @AlexisFlores17
+* @jorg-gr
 
 Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. El apoyo de las siguintes personas e instituciones fue indispensable:
 * Diana Urquiza

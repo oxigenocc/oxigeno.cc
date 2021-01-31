@@ -6,13 +6,23 @@ services:
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=MyWeirdPass!
+      - POSTGRES_PASSWORD=MyWeirdPass! # Cambia esta clave a una segura
     volumes:
-      - /home/oxigenocc/data-db/:/var/lib/postgresql/data
+      - /home/oxigenocc/data-db/:/var/lib/postgresql/data # Cambia oxigenocc por el nombre del usuario de tu host
   web:
     restart: always
     build: .
     command: bash -c "./entrypoint.sh"
+    environment:
+      - SECRET_KEY=<django_secret_key> # Cambia esto por una generada aquí https://miniwebtool.com/django-secret-key-generator/
+      - API_KEY=<google_maps_api_key> # Cambia esto por tu API key de google maps
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=MyWeirdPass!
+      - DB_HOST=db
+      - DB_PORT=5432
+      - ALLOWED_HOSTS=myhost.com,www.myhost.com # Cambia esto por el dominio que vas a usar en tu host
+      - DEBUG=False
     ports:
       - "8000:8000"
     depends_on:
