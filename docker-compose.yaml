@@ -23,6 +23,7 @@ services:
       - DB_PORT=5432
       - ALLOWED_HOSTS=myhost.com,www.myhost.com # Cambia esto por el dominio que vas a usar en tu host
       - DEBUG=False
+      - STATIC_ROOT=/home/oxigenocc/static # Cambia esto a la ruta de tu directorio de static
     ports:
       - "8000:8000"
     depends_on:
