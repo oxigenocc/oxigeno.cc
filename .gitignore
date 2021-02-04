@@ -157,3 +157,5 @@ yarn-error.log*
 
 docker-compose.prod.yaml
 docker-compose.dev.yaml
+frontend/.eslintcache
+.vscode/
