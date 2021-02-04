@@ -2,7 +2,8 @@ from datetime import datetime as dt
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
-from django.db.models import Max
+from django.db.models import Max, CharField
+from django.db.models.functions import Lower
 from django.core.paginator import Paginator
 from django.core.exceptions import FieldError
 from decouple import config
@@ -10,6 +11,8 @@ import pytz
 
 from .models import Distribuidor, Tanque, Concentrador
 
+
+CharField.register_lookup(Lower)
 
 def sort_by_availability(dist):
     values = []
