@@ -156,4 +156,4 @@ yarn-debug.log*
 yarn-error.log*
 
 docker-compose.prod.yaml
-docker-compose.dev.yamlfro
+docker-compose.dev.yaml

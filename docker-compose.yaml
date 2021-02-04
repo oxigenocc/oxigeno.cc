@@ -12,7 +12,7 @@ services:
   web:
     restart: always
     build: .
-    command: bash -c "./entrypoint.sh"
+    command: gunicorn --bind 0.0.0.0:5000 mysite.wsgi:application
     environment:
       - SECRET_KEY=<django_secret_key> # Cambia esto por una generada aquí https://miniwebtool.com/django-secret-key-generator/
       - API_KEY=<google_maps_api_key> # Cambia esto por tu API key de google maps
