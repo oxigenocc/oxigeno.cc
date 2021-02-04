@@ -151,7 +151,7 @@ def filter_distribuidores(q):
     else:
         d = d.filter(dar_de_baja=False).distinct()
     if 'nombreComo' in q:
-        d = d.filter(nombre_distribuidor__contains=q['nombreComo']).distinct()
+        d = d.filter(nombre_distribuidor__unaccent__lower=q['nombreComo'].lower()).distinct()
     return d
 
 
