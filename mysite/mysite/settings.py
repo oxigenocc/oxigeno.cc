@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.redirects',
     'corsheaders',
+    'django.contrib.postgres',
 ]
 
 SITE_ID = 1
