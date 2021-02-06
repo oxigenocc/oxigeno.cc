@@ -25,7 +25,9 @@ export default function MyCard(props) {
     concentradores,
     tanques,
     lat,
-    lng
+    lng,
+    link_pagina,
+    whatsapp
   }= props.distribuidor
 
   const latMapa= lat? lat:"";
@@ -74,19 +76,19 @@ export default function MyCard(props) {
   function disponibilidadPicker(tanques) {
     let disponibilidad
     if(tanques === 0){
-      disponibilidad = <Badge variant="secondary">Sin Disponibilidad</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="secondary">Sin Disponibilidad</Badge>
     }
     else if(tanques > 0 &&  tanques <= 5){
-      disponibilidad = <Badge variant="danger">Baja</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="danger">Baja</Badge>
     }
     else if(tanques > 5 &&  tanques <= 10){
-      disponibilidad = <Badge variant="warning">Media</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="warning">Media</Badge>
     }
     else if(tanques > 10){
-      disponibilidad = <Badge variant="success">Alta</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="success">Alta</Badge>
     }
     else{
-      disponibilidad = <Badge variant="dark">Sin Información</Badge>
+      disponibilidad = <Badge  className="badgeCard" variant="primary">Lista de espera</Badge>
     }    
     return disponibilidad    
   }
@@ -99,29 +101,54 @@ export default function MyCard(props) {
         </Card.Header>
         <Card.Body>
           <Card.Title className="card-title">{nombre_distribuidor}</Card.Title>
-          <Card.Subtitle className="text-muted">Tanques:</Card.Subtitle>
+          <Card.Subtitle className="mt10">Tanques:</Card.Subtitle>
           <Container>          
-          <Row>
+          <Row className="mt10">
               <Col>
-                Renta: {disponibilidadPicker(tanques_renta)}
+                <Row className="rowBadge">
+                  Renta:
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_renta)}
+                </Row>
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(tanques_venta)}
+                <Row className="rowBadge">
+                  Venta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_venta)}
+                </Row>
               </Col>
               <Col>
-                Recarga: {disponibilidadPicker(tanques_recarga)}
+                <Row className="rowBadge">
+                  Recarga: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(tanques_recarga)}
+                </Row>
               </Col>
             </Row>        
           </Container>
           <br/>
-          <Card.Subtitle className="text-muted">Concentradores:</Card.Subtitle>
+          <Card.Subtitle className="mt10">Concentradores:</Card.Subtitle>
           <Container>          
-            <Row>
+            <Row className="mt10">
               <Col>
-                Renta: {disponibilidadPicker(concentradores_renta)}
+                <Row className="rowBadge">
+                  Renta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(concentradores_renta)}
+                </Row>
               </Col>
               <Col>
-                Venta: {disponibilidadPicker(concentradores_venta)}
+                <Row className="rowBadge">
+                  Venta: 
+                </Row>
+                <Row className="rowBadge">
+                  {disponibilidadPicker(concentradores_venta)}
+                </Row>
               </Col>            
             </Row>          
           </Container>
@@ -147,21 +174,31 @@ export default function MyCard(props) {
           <Card.Text>
             {notas}
           </Card.Text>
-          
+          <Container className="mycard-footer">          
+            <Row>
+                <Col className="boton-carta link">            
+                  <Card.Link href= {link_pagina} target="_blank" rel="noreferrer" >{link_pagina ===null ? "Sin página": "Página Web"}</Card.Link>
+                </Col>
+                <Col className="boton-carta whatsapp">
+                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target="_blank" rel="noreferrer">{ 
+                    whatsapp === null ? "Sin Whatsapp": "Whatsapp"
+                    } </Card.Link>
+                </Col>            
+              </Row>    
+              <Row>
+              <Col className="boton-carta map">            
+                <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
+              </Col>
+              <Col className="boton-carta tel">
+                <Card.Link href={`tel:${telefono}`}>{ 
+                  telefono ===0 || telefono==="0"? "5556581111":telefono
+                  } </Card.Link>
+              </Col>            
+            </Row>         
+          </Container>      
         </Card.Body>
         
-        <Container className="mycard-footer">          
-          <Row>
-            <Col className="map">            
-              <Card.Link href= {`https://www.google.com/maps/place/${latMapa},${lngMapa}`} target="_blank" rel="noreferrer" >Mapa</Card.Link>
-            </Col>
-            <Col className="tel">
-              <Card.Link href={`tel:${telefono}`}>{ 
-                telefono ===0 || telefono==="0"? "5556581111":telefono
-                } </Card.Link>
-            </Col>            
-          </Row>          
-        </Container>                      
+                
         
       </Card>
     </div>
