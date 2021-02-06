@@ -11,6 +11,10 @@ export const Footer = () =>{
 
     return(
         <div className="footerContainer">
+            <div className="footerPostman">
+                <p className="textoPostman">¿Eres programador? puedes usar nuestra API de forma gratuita</p>
+                <a href="https://app.getpostman.com/run-collection/90220cc63e76e5062bfd" target="_blank"><div className="botonPostman">Pruébala en postman</div></a>
+            </div>
             <div className="footerLocatel">
                 <div>
                     <img src={Imagen1} alt="logo gobierno 1" className="imagen1 img-fluid"></img>   
@@ -19,7 +23,7 @@ export const Footer = () =>{
                 <img src={ImagenLocatel} alt="logo locatel" className="imagenLocatelFooter img-fluid"></img>
             </div>
             <div className="footer">
-                <div className="copyOxigeno">Oxigeno.cc</div>
+                <div className="copyOxigeno">Oxigenocdmx.cc</div>
                 <div className="refLsd">
                     <a href="https://lsdlab.com.mx/" rel="noreferrer" target="_blank">Administrado por Light & Sound Disruptive Lab</a>
                     <div className="contenedorImagen">

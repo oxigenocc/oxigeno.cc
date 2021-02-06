@@ -20,6 +20,29 @@
     }
 }
 
+.footerPostman{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    .textoPostman{
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        color: rgba($color: black, $alpha: 0.54);
+    }
+    .botonPostman{
+        background-color: #ff6c37;
+        color: white;
+        padding: 10px 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        -webkit-box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4); 
+        box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4);    }
+}
+
 .footerLocatel{
     display: flex;
     flex-flow: row wrap;
@@ -53,7 +76,7 @@
 
     @media ( max-width: 412px){
         width: 90px;
-        height: 25px;
+        height: 30px;
     }
 }
 
