@@ -32,50 +32,68 @@ export default function MyCard(props) {
 
   const latMapa= lat? lat:"";
   const lngMapa=lng? lng :"";
+
+  let ofrece_tanque_renta;
   let tanques_renta;
 
   if ( Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_renta !== undefined ) {
     tanques_renta=tanques[0].disponibilidad_renta 
+    ofrece_tanque_renta = tanques[0].renta
   }else{
     tanques_renta=-1;
+    ofrece_tanque_renta=false;
   }; 
 
   let tanques_venta;
+  let ofrece_tanque_venta;
 
   if (  Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_venta !== undefined) {
     tanques_venta=tanques[0].disponibilidad_venta
+    ofrece_tanque_venta=tanques[0].venta
   }else{
     tanques_venta=-1;
+    ofrece_tanque_venta=false;
   }; 
 
   let tanques_recarga;
+  let ofrece_tanques_recarga;
 
   if (  Object.keys(tanques).length !==0 &&  typeof tanques[0].disponibilidad_recarga !== undefined) {
-    tanques_recarga = tanques[0].disponibilidad_recarga;
+    tanques_recarga = tanques[0].disponibilidad_recarga
+    ofrece_tanques_recarga= tanques[0].recarga
   }else{
-    tanques_recarga=-1;
+    tanques_recarga= -1;
+    ofrece_tanques_recarga=false;
   }
   
   let concentradores_renta;
+  let ofrece_concentradores_renta;
   if ( Object.keys(concentradores).length !==0 &&  typeof concentradores[0].disponibilidad_renta !== undefined) {
-    concentradores_renta = concentradores[0].disponibilidad_renta;
+    concentradores_renta = concentradores[0].disponibilidad_renta
+    ofrece_concentradores_renta= concentradores[0].renta
   }else{
     concentradores_renta= -1;
+    ofrece_concentradores_renta=false;
   }
 
   let concentradores_venta;
+  let ofrece_concentradores_venta;
 
   if ( Object.keys(concentradores).length !==0 &&typeof concentradores[0].disponibilidad_venta !== undefined) {
     concentradores_venta  = concentradores[0].disponibilidad_venta;
+    ofrece_concentradores_venta = concentradores[0].venta
   }else{
+    ofrece_concentradores_venta=false;
     concentradores_venta= -1;
   }
   
   
 
-  function disponibilidadPicker(tanques) {
+  function disponibilidadPicker(tanques,disponibilidadServicio) {
     let disponibilidad
-    if(tanques === 0){
+    if(disponibilidadServicio ===false){
+      disponibilidad = <Badge  className="badgeCard" variant="light">N/A</Badge>
+    }else if(tanques === 0){
       disponibilidad = <Badge  className="badgeCard" variant="secondary">Sin Disponibilidad</Badge>
     }
     else if(tanques > 0 &&  tanques <= 5){
@@ -87,7 +105,7 @@ export default function MyCard(props) {
     else if(tanques > 10){
       disponibilidad = <Badge  className="badgeCard" variant="success">Alta</Badge>
     }
-    else{
+    else {
       disponibilidad = <Badge  className="badgeCard" variant="primary">Lista de espera</Badge>
     }    
     return disponibilidad    
@@ -109,7 +127,7 @@ export default function MyCard(props) {
                   Renta:
                 </Row>
                 <Row className="rowBadge">
-                  {disponibilidadPicker(tanques_renta)}
+                  {disponibilidadPicker(tanques_renta,ofrece_tanque_renta)}
                 </Row>
               </Col>
               <Col>
@@ -117,7 +135,7 @@ export default function MyCard(props) {
                   Venta: 
                 </Row>
                 <Row className="rowBadge">
-                  {disponibilidadPicker(tanques_venta)}
+                  {disponibilidadPicker(tanques_venta,ofrece_tanque_venta)}
                 </Row>
               </Col>
               <Col>
@@ -125,7 +143,7 @@ export default function MyCard(props) {
                   Recarga: 
                 </Row>
                 <Row className="rowBadge">
-                  {disponibilidadPicker(tanques_recarga)}
+                  {disponibilidadPicker(tanques_recarga,ofrece_tanques_recarga)}
                 </Row>
               </Col>
             </Row>        
@@ -139,7 +157,7 @@ export default function MyCard(props) {
                   Renta: 
                 </Row>
                 <Row className="rowBadge">
-                  {disponibilidadPicker(concentradores_renta)}
+                  {disponibilidadPicker(concentradores_renta,ofrece_concentradores_renta)}
                 </Row>
               </Col>
               <Col>
@@ -147,7 +165,7 @@ export default function MyCard(props) {
                   Venta: 
                 </Row>
                 <Row className="rowBadge">
-                  {disponibilidadPicker(concentradores_venta)}
+                  {disponibilidadPicker(concentradores_venta,ofrece_concentradores_venta)}
                 </Row>
               </Col>            
             </Row>          
@@ -180,7 +198,7 @@ export default function MyCard(props) {
                   <Card.Link href= {link_pagina} target="_blank" rel="noreferrer" >{link_pagina ===null ? "Sin página": "Página Web"}</Card.Link>
                 </Col>
                 <Col className="boton-carta whatsapp">
-                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target="_blank" rel="noreferrer">{ 
+                  <Card.Link href={ whatsapp ===null? "#":`https://api.whatsapp.com/send?text=Hola, me gustaría obtener información.&phone=+52${whatsapp}&abid=+52${whatsapp}`} target={ whatsapp === null ? "" : "_blank"} rel="noreferrer">{ 
                     whatsapp === null ? "Sin Whatsapp": "Whatsapp"
                     } </Card.Link>
                 </Col>            
