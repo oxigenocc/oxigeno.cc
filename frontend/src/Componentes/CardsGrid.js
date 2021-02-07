@@ -24,7 +24,7 @@ export default function CardsGrid(props) {
   }
 
   // const endPoint = window.location.href + "data";
-  const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data";
+  const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/v1.1/data";
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
