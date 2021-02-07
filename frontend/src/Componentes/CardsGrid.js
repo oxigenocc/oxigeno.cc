@@ -23,8 +23,8 @@ export default function CardsGrid(props) {
     document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
   }
 
-  // const endPoint = window.location.href + "data";
-  const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/v1.1/data";
+  const endPoint = window.location.href + "v1.1/data";
+  // const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/v1.1/data";
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
