@@ -16,6 +16,7 @@ class Distribuidor(models.Model):
     a_domicilio =  models.BooleanField()
     pago_con_tarjeta = models.BooleanField()
     notas = models.TextField(null=True, blank=True)
+    notas_internas = models.TextField(null=True, blank=True)
     telefono = models.CharField(max_length=20)
     whatsapp = models.CharField(max_length=20, null=True, blank= True)
     link_pagina = models.CharField(max_length=100, null=True, blank=True)        
