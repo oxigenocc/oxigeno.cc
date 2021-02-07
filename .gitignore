@@ -27,7 +27,6 @@ share/python-wheels/
 *.egg
 MANIFEST
 django/
-mysite/oxigeno/migrations/*
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -134,7 +133,7 @@ dmypy.json
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+frontend/node_modules
 /.pnp
 .pnp.js
 
@@ -157,3 +156,5 @@ yarn-error.log*
 
 docker-compose.prod.yaml
 docker-compose.dev.yaml
+frontend/.eslintcache
+.vscode/
