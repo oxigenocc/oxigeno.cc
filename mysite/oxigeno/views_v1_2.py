@@ -247,20 +247,20 @@ def rest_post_distribuidor_potencial(request):
     data = request.POST
     if request.method == 'POST':
         d = DistribuidorPotencial(
-            nombre_distribuidor=data.get('nombreDistribuidor'),
-            rfc=data.get('rfc'),
-            telefono=data.get('telefono'),
-            direccion=data.get('direccion'),
-            horario=data.get('horario'),
-            link_pagina=data.get('linkPagina'),
-            whatsapp=data.get('whatsapp'),
-            a_domicilio=data.get('aDomicilio'),
-            pago_con_tarjeta=data.get('pagoConTarjeta'),
-            ofrece_venta_de_tanque=data.get('ofreceVentaDeTanque'),
-            ofrece_renta_de_tanque=data.get('ofreceRentaDeTanque'),
-            ofrece_recarga_de_tanque=data.get('ofreceRecargaDeTanque'),
-            ofrece_venta_de_concentrador=data.get('ofreceVentaDeConcentrador'),
-            ofrece_renta_de_concentrador=data.get('ofreceRentaDeConcentrador')
+            nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
+            rfc=data.get('rfc', 'Not working'),
+            telefono=data.get('telefono', 'Not working'),
+            direccion=data.get('direccion', 'Not working'),
+            horario=data.get('horario', 'Not working'),
+            link_pagina=data.get('linkPagina', 'Not working'),
+            whatsapp=data.get('whatsapp', 'Not working'),
+            a_domicilio=data.get('aDomicilio', 'Not working'),
+            pago_con_tarjeta=data.get('pagoConTarjeta', 'Not working'),
+            ofrece_venta_de_tanque=data.get('ofreceVentaDeTanque', 'Not working'),
+            ofrece_renta_de_tanque=data.get('ofreceRentaDeTanque', 'Not working'),
+            ofrece_recarga_de_tanque=data.get('ofreceRecargaDeTanque', 'Not working'),
+            ofrece_venta_de_concentrador=data.get('ofreceVentaDeConcentrador', 'Not working'),
+            ofrece_renta_de_concentrador=data.get('ofreceRentaDeConcentrador', 'Not working')
         )
         d.save()
         return JsonResponse({"message": "Succesfully saved distribuidor potencial"})
