@@ -1,4 +1,6 @@
 from datetime import datetime as dt
+import json
+
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.core.exceptions import FieldError
@@ -244,7 +246,8 @@ def rest_get_single(request, id_distribuidor):
 
 @csrf_exempt
 def rest_post_distribuidor_potencial(request):
-    data = request.POST
+    
+    data = json.loads(request.body)
     if request.method == 'POST':
         d = DistribuidorPotencial(
             nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
