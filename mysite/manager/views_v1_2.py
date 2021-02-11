@@ -1,12 +1,11 @@
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
-from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.decorators import login_required
-
+from django.views.decorators.csrf import csrf_exempt
 from oxigeno.models import Distribuidor
 
 
-@ensure_csrf_cookie
+@csrf_exempt
 def manager_login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '').strip()
