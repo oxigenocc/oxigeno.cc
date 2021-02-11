@@ -76,7 +76,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static')],
+        'DIRS': [os.path.join(BASE_DIR, 'oxigeno/static'), os.path.join(BASE_DIR, 'manager/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
