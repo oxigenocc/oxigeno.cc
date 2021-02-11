@@ -19,6 +19,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('oxigeno/', include('oxigeno.urls')),
-    path('manager/', include('manager.urls')), 
-    path('formulario/', include('oxigeno.urls.post_distribuidor_potencial')),
+    path('manager/', include('manager.urls')),
 ]

@@ -243,7 +243,7 @@ def rest_get_single(request, id_distribuidor):
     
 
 @csrf_exempt
-def post_distribuidor_potencial(request):
+def rest_post_distribuidor_potencial(request):
     data = request.POST
     if request.method == 'POST':
         d = DistribuidorPotencial(
