@@ -6,7 +6,7 @@ from django_google_maps import fields as map_fields
 from simple_history.admin import SimpleHistoryAdmin
 from simple_history import register
 
-from .models import Distribuidor, Tanque, Concentrador
+from .models import Distribuidor, Tanque, Concentrador, DistribuidorPotencial
 
 
 class DistribuidorAdmin(SimpleHistoryAdmin):
@@ -61,6 +61,9 @@ class ConcentradorAdmin(SimpleHistoryAdmin):
         return super(ConcentradorAdmin, self).get_form(request, obj, **kwargs)
 
 
+
+
 admin.site.register(Distribuidor, DistribuidorAdmin)
 admin.site.register(Tanque, TanqueAdmin)
 admin.site.register(Concentrador, ConcentradorAdmin)
+admin.site.register(DistribuidorPotencial, SimpleHistoryAdmin)
