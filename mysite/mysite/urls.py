@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from ..oxigeno.views_v1_2 import post_distribuidor_potencial
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('oxigeno/', include('oxigeno.urls')),
     path('manager/', include('manager.urls')),
-    path('formulario', oxigeno.views_v1_2.post_distribuidor_potencial),
+    path('formulario', post_distribuidor_potencial),
 ]
