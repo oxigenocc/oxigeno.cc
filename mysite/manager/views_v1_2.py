@@ -1,9 +1,12 @@
-from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.contrib.auth.decorators import login_required
 
 from oxigeno.models import Distribuidor
 
+
+@ensure_csrf_cookie
 def manager_login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '').strip()
@@ -24,15 +27,18 @@ def manager_login(request):
     return JsonResponse({"message": "Bad request. Contacta al administrador del sitio"}, status=400)
 
 
+@login_required
 def manager_logout(request):
     logout(request)
     return JsonResponse({"message": "Log out successful."})
 
 
+@login_required
 def rest_post(request):
     p = request.POST
     dist = Distribuidor.objects.get(pk=p['distribuidorId'])
     dist.notas = p['notas']
+    dist.notas = p['notasInternas']
 
     tanque = dist.tanque_set[0]
     concentrador = dist.concentrador_set[0]
@@ -50,3 +56,4 @@ def rest_post(request):
     tanque.save()
     concentrador.save()
     dist.save()
+    return JsonResponse({"message": "No hubo problemas al editar el distribuidor."})
