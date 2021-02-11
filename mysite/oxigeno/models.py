@@ -73,3 +73,33 @@ class Concentrador(models.Model):
     
     class Meta: 
         verbose_name_plural = "concentradores"
+
+
+class DistribuidorPotencial(models.Model):
+    id = models.AutoField(primary_key=True)
+    nombre_distribuidor = models.CharField(max_length=100)
+    rfc = models.CharField(max_length=13)
+    telefono = models.CharField(max_length=20)
+    direccion = models.TextField()    
+    horario = models.CharField(max_length=100)
+    link_pagina = models.CharField(max_length=100, null=True, blank=True)   
+    whatsapp = models.CharField(max_length=20, null=True, blank= True) 
+    a_domicilio =  models.BooleanField()  
+    pago_con_tarjeta = models.BooleanField()
+    ofrece_venta_de_tanque = models.BooleanField()
+    ofrece_renta_de_tanque = models.BooleanField()
+    ofrece_recarga_de_tanque = models.BooleanField()
+    ofrece_venta_de_concentrador = models.BooleanField()
+    ofrece_renta_de_concentrador = models.BooleanField()
+    notas_internas = models.TextField(null=True, blank=True) 
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    ultima_actualizacion = models.DateTimeField(auto_now=True)
+    history = HistoricalRecords()
+
+    class Meta: 
+        verbose_name_plural = "distribuidores potenciales"
+
+
+    def __str__(self):
+        return self.nombre_distribuidor
+        
