@@ -247,7 +247,7 @@ def rest_get_single(request, id_distribuidor):
 @csrf_exempt
 def rest_post_distribuidor_potencial(request):
     
-    data = json.loads(request.body)
+    data = json.loads(request.body).get("params")
     if request.method == 'POST':
         d = DistribuidorPotencial(
             nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
