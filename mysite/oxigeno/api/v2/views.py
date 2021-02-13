@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -17,6 +18,14 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
     serializer_class = DistribuidorSerializer
     filter_backends = (DjangoFilterBackend, )
     filterset_class = DistribuidorFilterSet
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset().annotate(
+            total_items=Count('tanque')+Count('concentrador'))
+        ).order_by('total_items')
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=200)
+
 
 
 class ManagerDistribuidorUpdateViewSet(mixins.CreateModelMixin,
