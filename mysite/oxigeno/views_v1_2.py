@@ -20,6 +20,7 @@ def sort_by_availability(dist):
     for c in dist['concentradores']:
         values += [y for y in c.values() if isinstance(y, int)]
     if values:
+        print(values)
         ret = max(values)
     else:
         ret = 0
