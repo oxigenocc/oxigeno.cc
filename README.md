@@ -3,7 +3,7 @@
 Sistema de reportes de disponibilidad de oxigeno en la CDMX. Favor de reportar cualquier bug en la página de [issues](https://github.com/oxigenocc/oxigeno.cc/issues).
 
 ## Usa nuestra API gratuita
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/90220cc63e76e5062bfd)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/69624bc43b05a92a705a#?env%5Boxigeno_env%5D=W3sia2V5IjoibG9jYWxfdXJsIiwidmFsdWUiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvIiwiZW5hYmxlZCI6dHJ1ZX0seyJrZXkiOiJwcm9kX3VybCIsInZhbHVlIjoiaHR0cHM6Ly9kZXYtb3hpZ2Vuby5jZG14LmdvYi5teC8iLCJlbmFibGVkIjp0cnVlfV0=)
 
 ## ¿Quieres replicar esta página en tu ciudad?
 En un servidor que redireccione el puerto 443 al 8000 instala [docker](https://docs.docker.com/engine/install/ubuntu/) y [docker-compose](https://docs.docker.com/compose/install/), crea un archivo docker-compose.yaml y pega lo siguiente:
