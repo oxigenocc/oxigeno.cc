@@ -21,7 +21,7 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
 
 class ManagerDistribuidorUpdateViewSet(mixins.CreateModelMixin,
                                        viewsets.GenericViewSet):
-    permission_classes = (AllowAny, IsAuthenticated)
+    permission_classes = (IsAuthenticated, )
     queryset = Distribuidor.objects.all()
     serializer_class = DistribuidorUpdateSerializer
 
