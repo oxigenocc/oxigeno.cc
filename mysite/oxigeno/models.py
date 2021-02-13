@@ -28,7 +28,7 @@ class Distribuidor(models.Model):
     abre_fin_de_semana = models.BooleanField(default=True)
     abre_24h = models.BooleanField(default=True)
     recarga_gratis = models.BooleanField(default=False)
-    history = HistoricalRecords(default=True)
+    history = HistoricalRecords()
 
     class Meta: 
         verbose_name_plural = "distribuidores"
