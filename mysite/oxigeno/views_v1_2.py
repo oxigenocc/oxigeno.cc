@@ -1,4 +1,5 @@
 from datetime import datetime as dt
+from datetime import timezone
 import json
 
 from django.http import JsonResponse
@@ -10,13 +11,14 @@ import pytz
 
 from .models import Distribuidor, DistribuidorPotencial
 
+local_tz = pytz.timezone('America/Mexico_City')
 
 def sort_by_availability(dist):
     values = []
     for t in dist['tanques']:
-        values += t.values()
+        values += [x for x in t.values() if isinstance(x, int)]
     for c in dist['concentradores']:
-        values += c.values()
+        values += [y for y in c.values() if isinstance(x, int)]
     if values:
         ret = max(values)
     else:
@@ -152,6 +154,24 @@ def filter_distribuidores(q):
         d = d.filter(dar_de_baja=False).distinct()
     if 'nombreComo' in q:
         d = d.filter(nombre_distribuidor__unaccent__icontains=q['nombreComo']).distinct()
+    if 'abiertoFin' in  q or dt:
+        if not q['abiertoFin'].isnumeric():
+            raise FieldError("abiertoFin is not an int")
+        if int(q['abiertoFin']):
+            d = d.filter(abre_fin_de_semana=True).distinct()
+    if 'abierto24' in  q:
+        if not q['abierto24'].isnumeric():
+            raise FieldError("abierto24 is not an int")
+        if int(q['abierto24']):
+            d = d.filter(abre_24h=True).distinct()
+    local_dt = dt.utcnow().replace(tzinfo=pytz.utc).astimezone(local_tz)
+    if local_dt.weekday() >= 5:
+        d = d.filter(abre_fin_de_semana=True).distinct()
+    if 'gratis' in  q or dt:
+        if not q['gratis'].isnumeric():
+            raise FieldError("gratis is not an int")
+        if int(q['gratis']):
+            d = d.filter(recarga_gratis=True).distinct()
     return d
 
 
@@ -246,26 +266,28 @@ def rest_get_single(request, id_distribuidor):
 
 @csrf_exempt
 def rest_post_distribuidor_potencial(request):
-    
-    data = json.loads(request.body).get("params")
-    if request.method == 'POST':
-        d = DistribuidorPotencial(
-            nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
-            rfc=data.get('rfc', 'Not working'),
-            telefono=data.get('telefono', 'Not working'),
-            direccion=data.get('direccion', 'Not working'),
-            horario=data.get('horario', 'Not working'),
-            link_pagina=data.get('linkPagina', 'Not working'),
-            whatsapp=data.get('whatsapp', 'Not working'),
-            a_domicilio=data.get('aDomicilio', 'Not working'),
-            pago_con_tarjeta=data.get('pagoConTarjeta', 'Not working'),
-            ofrece_venta_de_tanque=data.get('ofreceVentaDeTanque', 'Not working'),
-            ofrece_renta_de_tanque=data.get('ofreceRentaDeTanque', 'Not working'),
-            ofrece_recarga_de_tanque=data.get('ofreceRecargaDeTanque', 'Not working'),
-            ofrece_venta_de_concentrador=data.get('ofreceVentaDeConcentrador', 'Not working'),
-            ofrece_renta_de_concentrador=data.get('ofreceRentaDeConcentrador', 'Not working')
-        )
-        d.save()
-        return JsonResponse({"message": "Succesfully saved distribuidor potencial"})
-    else:
-        return JsonResponse({"message": "The request should be POST"}, status=400)
+    try:
+        data = json.loads(request.body).get("params")
+        if request.method == 'POST':
+            d = DistribuidorPotencial(
+                nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
+                rfc=data.get('rfc', 'Not working'),
+                telefono=data.get('telefono', 'Not working'),
+                direccion=data.get('direccion', 'Not working'),
+                horario=data.get('horario', 'Not working'),
+                link_pagina=data.get('linkPagina', 'Not working'),
+                whatsapp=data.get('whatsapp', 'Not working'),
+                a_domicilio=data.get('aDomicilio', 'Not working'),
+                pago_con_tarjeta=data.get('pagoConTarjeta', 'Not working'),
+                ofrece_venta_de_tanque=data.get('ofreceVentaDeTanque', 'Not working'),
+                ofrece_renta_de_tanque=data.get('ofreceRentaDeTanque', 'Not working'),
+                ofrece_recarga_de_tanque=data.get('ofreceRecargaDeTanque', 'Not working'),
+                ofrece_venta_de_concentrador=data.get('ofreceVentaDeConcentrador', 'Not working'),
+                ofrece_renta_de_concentrador=data.get('ofreceRentaDeConcentrador', 'Not working')
+            )
+            d.save()
+            return JsonResponse({"message": "Succesfully saved distribuidor potencial"})
+        else:
+            return JsonResponse({"message": "The request should be POST"}, status=400)
+    except:
+        return JsonResponse({"message": "Error en la validación de los datos"}, status=400)

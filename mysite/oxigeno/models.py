@@ -25,7 +25,10 @@ class Distribuidor(models.Model):
     dar_de_baja = models.BooleanField(default=False)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     ultima_actualizacion = models.DateTimeField(auto_now=True)
-    history = HistoricalRecords()
+    abre_fin_de_semana = models.BooleanField(default=True)
+    abre_24h = models.BooleanField(default=True)
+    recarga_gratis = models.BooleanField(default=False)
+    history = HistoricalRecords(default=True)
 
     class Meta: 
         verbose_name_plural = "distribuidores"
