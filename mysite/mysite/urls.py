@@ -20,5 +20,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('oxigeno/', include('oxigeno.urls')),
     path('manager/', include('manager.urls')),
-    path('formulario', oxigeno.views_v1_2.post_distribuidor_potencial),
 ]

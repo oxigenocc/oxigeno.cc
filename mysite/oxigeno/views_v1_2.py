@@ -1,4 +1,6 @@
 from datetime import datetime as dt
+import json
+
 from django.http import JsonResponse
 from django.core.paginator import Paginator
 from django.core.exceptions import FieldError
@@ -243,24 +245,25 @@ def rest_get_single(request, id_distribuidor):
     
 
 @csrf_exempt
-def post_distribuidor_potencial(request):
-    data = request.POST
+def rest_post_distribuidor_potencial(request):
+    
+    data = json.loads(request.body)
     if request.method == 'POST':
         d = DistribuidorPotencial(
-            nombre_distribuidor=data.get(''),
-            rfc=data.get(''),
-            telefono=data.get(''),
-            direccion=data.get(''),
-            horario=data.get(''),
-            link_pagina=data.get(''),
-            whatsapp=data.get(''),
-            a_domicilio=data.get(''),
-            pago_con_tarjeta=data.get(''),
-            ofrece_venta_de_tanque=data.get(''),
-            ofrece_renta_de_tanque=data.get(''),
-            ofrece_recarga_de_tanque=data.get(''),
-            ofrece_venta_de_concentrador=data.get(''),
-            ofrece_renta_de_concentrador=data.get('')
+            nombre_distribuidor=data.get('nombreDistribuidor', 'Not working'),
+            rfc=data.get('rfc', 'Not working'),
+            telefono=data.get('telefono', 'Not working'),
+            direccion=data.get('direccion', 'Not working'),
+            horario=data.get('horario', 'Not working'),
+            link_pagina=data.get('linkPagina', 'Not working'),
+            whatsapp=data.get('whatsapp', 'Not working'),
+            a_domicilio=data.get('aDomicilio', 'Not working'),
+            pago_con_tarjeta=data.get('pagoConTarjeta', 'Not working'),
+            ofrece_venta_de_tanque=data.get('ofreceVentaDeTanque', 'Not working'),
+            ofrece_renta_de_tanque=data.get('ofreceRentaDeTanque', 'Not working'),
+            ofrece_recarga_de_tanque=data.get('ofreceRecargaDeTanque', 'Not working'),
+            ofrece_venta_de_concentrador=data.get('ofreceVentaDeConcentrador', 'Not working'),
+            ofrece_renta_de_concentrador=data.get('ofreceRentaDeConcentrador', 'Not working')
         )
         d.save()
         return JsonResponse({"message": "Succesfully saved distribuidor potencial"})
