@@ -16,9 +16,9 @@ local_tz = pytz.timezone('America/Mexico_City')
 def sort_by_availability(dist):
     values = []
     for t in dist['tanques']:
-        values += [x for x in t.values() if isinstance(x, int)]
+        values += [x for x in t.values() if not isinstance(x, bool)]
     for c in dist['concentradores']:
-        values += [y for y in c.values() if isinstance(y, int)]
+        values += [y for y in c.values() if not isinstance(y, bool)]
     if values:
         print(values)
         ret = max(values)
