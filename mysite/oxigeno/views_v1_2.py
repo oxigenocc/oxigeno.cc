@@ -18,7 +18,7 @@ def sort_by_availability(dist):
     for t in dist['tanques']:
         values += [x for x in t.values() if isinstance(x, int)]
     for c in dist['concentradores']:
-        values += [y for y in c.values() if isinstance(x, int)]
+        values += [y for y in c.values() if isinstance(y, int)]
     if values:
         ret = max(values)
     else:
