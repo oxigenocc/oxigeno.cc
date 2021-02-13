@@ -28,7 +28,7 @@ export const Buscador = () =>{
                             <div>
                                 <p className="texto" >Recuerda solo contratar oxígeno de locales establecidos ademas de hacer uso de este bajo indicación y supervisión médica</p>
                                 <span className="correo" >Cualquier duda o comentario contactanos a: </span>
-                                <a href="mailto:oxigeno.cc.mx@gmail.com"><span className="correo correoLinea" >oxigeno.cc.mx@gmail.com</span></a>
+                                <a href="mailto:oxigenocdmx@gmail.com"><span className="correo correoLinea" >oxigenocdmx@gmail.com</span></a>
                             </div>           
                         </div>
                         <div className="BotonBuscar">

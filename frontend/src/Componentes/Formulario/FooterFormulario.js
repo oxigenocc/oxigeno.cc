@@ -1,29 +1,13 @@
 import React from 'react';
-import Imagen1 from '../img/imagen 1.png';
-import Imagen2 from '../img/imagen 2.png';
-import ImagenLocatel from '../img/locatel.png';
-import logoLight from '../img/logoLight.png';
-import { Link } from 'react-router-dom';
+import Imagen1 from '../../img/imagen 1.png';
+import Imagen2 from '../../img/imagen 2.png';
+import ImagenLocatel from '../../img/locatel.png';
+import logoLight from '../../img/logoLight.png';
 
-
-
-export const Footer = () =>{
-
-    function topFunction() {
-        document.body.scrollTop = 100; // For Safari
-        document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
-    }
+export const FooterFormulario = () =>{
 
     return(
         <div className="footerContainer">
-            <div className="footerFormDistribuidor">
-                <p>
-                    Si eres un distribuidor de oxígeno y 
-                    te gustaría aparecer en nuestra base 
-                    de datos da 
-                    click <Link onClick={topFunction} to="/formulario">aquí</Link> y llena el formulario de registro.
-                </p>
-            </div>
             <div className="footerPostman">
                 <p className="textoPostman">¿Eres programador? puedes usar nuestra API de forma gratuita</p>
                 <a href="https://app.getpostman.com/run-collection/90220cc63e76e5062bfd" target="_blank"><div className="botonPostman">Pruébala en postman</div></a>

@@ -25,6 +25,10 @@
 
 .boton-carta{
   cursor: pointer;
+  text-align: center;
+  @media screen and ( min-width: 300px){
+    min-width: 50%;
+  }
 }
 
 .map{  

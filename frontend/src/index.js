@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './Styles/indexCss.scss';
-import App from './App';
+import { AppRouterMain } from './AppRouterMain';
 
 ReactDOM.render(
-    <App />,
+    <AppRouterMain />,
   document.getElementById('root')
 );
