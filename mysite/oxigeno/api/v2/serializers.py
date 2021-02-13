@@ -4,6 +4,50 @@ from rest_framework import serializers
 from oxigeno.models import Distribuidor, Concentrador, Tanque
 
 
+class DistribuidorUodateSerializer(serializers.Serializer):
+    distribuidorId = serializers.IntegerField()
+    notas = serializers.CharField()
+    notasInternas = serializers.CharField()
+    tanqueOfreceRenta = serializers.BooleanField()
+    tanqueDisponibilidadRenta = serializers.IntegerField()
+    tanqueOfreceVenta = serializers.BooleanField()
+    tanqueDisponibilidadVenta = serializers.IntegerField()
+    tanqueOfreceRecarga = serializers.BooleanField()
+    tanqueDisponibilidadRecarga = serializers.IntegerField()
+    concentradorOfreceRenta = serializers.BooleanField()
+    concentradorDisponibilidadRenta = serializers.IntegerField()
+    concentradorOfreceVenta = serializers.BooleanField()
+    concentradorDisponibilidadVenta = serializers.IntegerField()
+
+    def validate(self, attrs):
+        self.distribuidor_data = {
+            "notas": attrs['notas'],
+            "notas_internas": attrs['notasInternas']
+        }
+        self.tanque_data = {
+            "ofrece_renta": attrs['tanqueOfreceRenta'],
+            "disponibilidad_renta": attrs['tanqueDisponibilidadRenta'],
+            "ofrece_venta": attrs['tanqueOfreceVenta'],
+            "disponibilidad_venta": attrs['tanqueDisponibilidadVenta'],
+            "ofrece_recarga": attrs['tanqueOfreceRecarga'],
+            "disponibilidad_recarga": attrs['tanqueDisponibilidadRecarga']
+        }
+        self.concentrador_data = {
+            "ofrece_renta": attrs['concentradorOfreceRenta'],
+            "disponibilidad_renta": attrs['concentradorDisponibilidadRenta'],
+            "ofrece_venta": attrs['concentradorOfreceVenta'],
+            "disponibilidad_venta": attrs['concentradorDisponibilidadVenta'],
+        }
+        try:
+            self.distribuidor = Distribuidor.objects.filter(
+                id=attrs['distribuidorId'])
+            if not self.distribuidor:
+                raise serializers.ValidationError('distribuidor no encontrado')
+        except Exception as e:
+            raise serializers.ValidationError(str(e))
+        return super().validate(attrs)
+
+
 class TanqueSerializer(serializers.ModelSerializer):
     renta = serializers.SerializerMethodField()
     venta = serializers.SerializerMethodField()

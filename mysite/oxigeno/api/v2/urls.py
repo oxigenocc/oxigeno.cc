@@ -1,11 +1,16 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from oxigeno.api.v2.views import DistribuidorListViewSet
+from oxigeno.api.v2.views import DistribuidorListViewSet,\
+    ManagerDistribuidorUpdateViewSet
 
-router = DefaultRouter()
-router.register(r'', DistribuidorListViewSet)
+distribuidor_router = DefaultRouter()
+distribuidor_router.register(r'', DistribuidorListViewSet)
+
+manager_router = DefaultRouter()
+manager_router.register(r'distribuidor', ManagerDistribuidorUpdateViewSet)
 
 
 urlpatterns = [
-    path('data/', include(router.urls)),
+    path('data/', include(distribuidor_router.urls)),
+    path('manager/', include(manager_router.urls)),
 ]
