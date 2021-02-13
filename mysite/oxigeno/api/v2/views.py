@@ -22,7 +22,7 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset().annotate(
             total_items=Count('tanque')+Count('concentrador'))
-        ).order_by('total_items')
+        ).order_by('-total_items')
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
