@@ -167,7 +167,7 @@ def filter_distribuidores(q):
     local_dt = dt.utcnow().replace(tzinfo=pytz.utc).astimezone(local_tz)
     if local_dt.weekday() >= 5:
         d = d.filter(abre_fin_de_semana=True).distinct()
-    if 'gratis' in  q or dt:
+    if 'gratis' in  q:
         if not q['gratis'].isnumeric():
             raise FieldError("gratis is not an int")
         if int(q['gratis']):
