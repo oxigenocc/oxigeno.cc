@@ -39,13 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'oxigeno.apps.OxigenoConfig',
     'django_google_maps',
     'simple_history',
     'django.contrib.sites',
     'django.contrib.redirects',
     'corsheaders',
     'django.contrib.postgres',
+    'oxigeno',
 ]
 
 SITE_ID = 1
@@ -156,3 +156,23 @@ STATIC_ROOT = config('STATIC_ROOT')
 
 
 SECURE_CONTENT_TYPE_NOSNIFF = False
+
+
+# Django Rest Framework
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': int(config('DJANGO_PAGINATION_LIMIT', default=10)),
+    'DATETIME_FORMAT': '%Y-%m-%dT%H:%M:%S%z',
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
