@@ -2,9 +2,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
-from oxigeno.models import Distribuidor, Tanque, Concentrador
+from oxigeno.models import Distribuidor, Tanque, Concentrador,\
+    DistribuidorPotencial
 from oxigeno.api.v2.serializers import DistribuidorSerializer,\
-    DistribuidorUodateSerializer
+    DistribuidorUodateSerializer, DistribuidorPotencialSerializer
 from oxigeno.api.v2.filters import DistribuidorFilterSet
 
 
@@ -40,4 +41,10 @@ class ManagerDistribuidorUpdateViewSet(mixins.CreateModelMixin,
             return Response(data=str(e), status=400)
         return Response(status=200)
 
+
+class DistribuidorPotencialCreateViewSet(mixins.CreateModelMixin,
+                                         viewsets.GenericViewSet):
+    permission_classes = (AllowAny, )
+    queryset = DistribuidorPotencial.objects.all()
+    serializer_class = DistribuidorPotencialSerializer
 

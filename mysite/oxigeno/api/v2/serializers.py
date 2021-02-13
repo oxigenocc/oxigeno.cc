@@ -1,7 +1,8 @@
 import pytz
 from datetime import datetime
 from rest_framework import serializers
-from oxigeno.models import Distribuidor, Concentrador, Tanque
+from oxigeno.models import Distribuidor, Concentrador, Tanque,\
+    DistribuidorPotencial
 
 
 class DistribuidorUodateSerializer(serializers.Serializer):
@@ -127,3 +128,10 @@ class DistribuidorSerializer(serializers.ModelSerializer):
         ultima_actualización = max(
             [obj.ultima_actualizacion, max_tanque, max_concentrador])
         return str(ultima_actualización)
+
+
+class DistribuidorPotencialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = DistribuidorPotencial
+        fields = '__all__'
+        read_only_fields = ('id',)
