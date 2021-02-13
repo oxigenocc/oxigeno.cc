@@ -5,8 +5,9 @@ from rest_framework.response import Response
 from oxigeno.models import Distribuidor, Tanque, Concentrador,\
     DistribuidorPotencial
 from oxigeno.api.v2.serializers import DistribuidorSerializer,\
-    DistribuidorUodateSerializer, DistribuidorPotencialSerializer
+    DistribuidorUpdateSerializer, DistribuidorPotencialSerializer
 from oxigeno.api.v2.filters import DistribuidorFilterSet
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class DistribuidorListViewSet(mixins.ListModelMixin,
@@ -22,8 +23,9 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
 class ManagerDistribuidorUpdateViewSet(mixins.CreateModelMixin,
                                        viewsets.GenericViewSet):
     permission_classes = (AllowAny, )
+    authentication_classes = (JWTAuthentication, )
     queryset = Distribuidor.objects.all()
-    serializer_class = DistribuidorUodateSerializer
+    serializer_class = DistribuidorUpdateSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

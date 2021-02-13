@@ -5,7 +5,7 @@ from oxigeno.models import Distribuidor, Concentrador, Tanque,\
     DistribuidorPotencial
 
 
-class DistribuidorUodateSerializer(serializers.Serializer):
+class DistribuidorUpdateSerializer(serializers.Serializer):
     distribuidorId = serializers.IntegerField()
     notas = serializers.CharField()
     notasInternas = serializers.CharField()
