@@ -1,13 +1,12 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from oxigeno.models import Distribuidor, Tanque, Concentrador,\
     DistribuidorPotencial
 from oxigeno.api.v2.serializers import DistribuidorSerializer,\
     DistribuidorUpdateSerializer, DistribuidorPotencialSerializer
 from oxigeno.api.v2.filters import DistribuidorFilterSet
-from rest_framework_simplejwt.authentication import JWTAuthentication
 
 
 class DistribuidorListViewSet(mixins.ListModelMixin,
@@ -23,7 +22,7 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
 class ManagerDistribuidorUpdateViewSet(mixins.CreateModelMixin,
                                        viewsets.GenericViewSet):
     permission_classes = (AllowAny, )
-    authentication_classes = (JWTAuthentication, )
+    authentication_classes = (IsAuthenticated, )
     queryset = Distribuidor.objects.all()
     serializer_class = DistribuidorUpdateSerializer
 
