@@ -1,98 +1,79 @@
 .card-lencho{
   margin-bottom: 20px;
 }
+.card-title{
+  font-size: 25px;
+}
 
-.tarjetas-container{
+.mt10{
+  margin-top: 10px;
+}
+
+.badgeCard{
+  margin: 0 5px;
+}
+
+.rowBadge{
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
   justify-content: center;
 }
 
-.circularProgress{
+.card-header{
+  text-align: end;
+}
+
+.boton-carta{
+  cursor: pointer;
+  text-align: center;
+  @media screen and ( min-width: 300px){
+    min-width: 50%;
+  }
+}
+
+.map{  
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;  
+  height: 50px;
+  background-color: #196BA7;
+  color: white;
+  border-bottom-left-radius: 3%;
 }
 
-.sinResultados{
+.tel{  
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
-  .cajaSinResultados{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 150px;
-    border: 1px solid gray;
-    border-radius: 20px;
-    background-color: rgba($color: gray, $alpha: 0.4);
-    font-size: 20px;
-    text-align: center;
-    color: black;
-    margin-bottom: 50px ;
-  }
+  justify-content: center;
+  height: 50px;
+  background-color: #0090BF;  
+  border-bottom-right-radius: 3%;
+  
 }
 
-.error{
+.link{  
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   align-items: center;
-  .cajaError{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height: 150px;
-    border: 1px solid red;
-    border-radius: 20px;
-    background-color: rgba($color: red, $alpha: 0.4);
-    font-size: 20px;
-    text-align: center;
-    color: white;
-    margin-bottom: 50px ;
-  }
+  justify-content: center;  
+  height: 50px;
+  background-color: #00B2BC;
+  color: white;
 }
-  .card-title{
-    font-size: 25px;
-  }
-  .mycard-footer{  
-    height: 50px;
-  }
+
+.whatsapp{  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #00D0A4;  
+  @media ( max-width: 376px){
+    font-size: 14px;
+}
   
-  .card-header{
-    text-align: end;
-  }
-  
-  .map{  
-    display: flex;
-    align-items: center;
-    justify-content: center;  
-    height: 50px;
-    background-color: #196BA7;
-    color: white;
-    border-bottom-left-radius: 3%;
-  }
-  
-  .tel{  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    background-color: #3BB56B;  
-    border-bottom-right-radius: 3%;
-    
-  }
-  
-  a{
-    color: white;
-    background-color: transparent;
-    text-decoration: none;
-  }
-  
+}
+
+a{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}

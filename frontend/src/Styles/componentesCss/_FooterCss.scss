@@ -1,3 +1,5 @@
+$naranjaPM: #ff6c37;
+
 .footerContainer{
     background-color: rgba($color: #e9ecef, $alpha: 1);
     display: flex;
@@ -20,6 +22,50 @@
     }
 }
 
+.footerFormDistribuidor{
+    width: 100%;
+    padding: 30px;
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba($color: grey, $alpha: 0.4);
+    a{
+        color: #ff6c37;
+    }
+    a:hover{
+        text-decoration: underline;
+    }
+    @media screen and (max-width: 767px){
+        font-size: 1rem;
+        padding: 20px;
+        padding-bottom: 10px;
+    }
+}
+
+.footerPostman{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    .textoPostman{
+        text-align: center;
+        font-family: Roboto, sans-serif;
+        color: rgba($color: black, $alpha: 0.54);
+    }
+    .botonPostman{
+        background-color: #ff6c37;
+        color: white;
+        padding: 10px 10px;
+        cursor: pointer;
+        border-radius: 10px;
+        -webkit-box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4); 
+        box-shadow: -1px 8px 27px 0px rgba(0,0,0,0.4);    }
+}
+
 .footerLocatel{
     display: flex;
     flex-flow: row wrap;
@@ -27,6 +73,7 @@
     align-items: center;
     width: 100%;
     height: 50px;
+    margin-top: 20px;
 }
 .imagen1{
     margin-right: 20px;
@@ -53,7 +100,7 @@
 
     @media ( max-width: 412px){
         width: 90px;
-        height: 25px;
+        height: 30px;
     }
 }
 
@@ -149,3 +196,4 @@
 
     }
 }
+

@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import axios from 'axios';
 import Pagination from '@material-ui/lab/Pagination';
+import {endPoints} from '../types/endPoints';
 
 export default function CardsGrid(props) { 
   const [data, setData] = useState([]); 
@@ -23,8 +24,7 @@ export default function CardsGrid(props) {
     document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
   }
 
-  const endPoint = window.location.href + "data";
-  // const endPoint = "https://dev-oxigeno.cdmx.gob.mx/oxigeno/data";
+  const endPoint = `${endPoints}/v1.1/data`;
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
@@ -82,7 +82,7 @@ export default function CardsGrid(props) {
                 />
               ) 
             : 
-            <div className="sinResultados">
+            <div className="tarjetas-container sinResultados  col-12 col-md-9">
               <div className="cajaSinResultados">
                 No se encontraron resultados con estos filtros
               </div>
