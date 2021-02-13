@@ -154,7 +154,7 @@ def filter_distribuidores(q):
         d = d.filter(dar_de_baja=False).distinct()
     if 'nombreComo' in q:
         d = d.filter(nombre_distribuidor__unaccent__icontains=q['nombreComo']).distinct()
-    if 'abiertoFin' in  q or dt:
+    if 'abiertoFin' in  q:
         if not q['abiertoFin'].isnumeric():
             raise FieldError("abiertoFin is not an int")
         if int(q['abiertoFin']):
