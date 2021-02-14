@@ -97,7 +97,7 @@ class DistribuidorSerializer(serializers.ModelSerializer):
         fields = ('concentradores', 'tanques', 'id', 'horario', 'estado',
                   'direccion', 'ciudad', 'a_domicilio', 'pago_con_tarjeta',
                   'notas', 'telefono', 'ultima_actualizacion', 'lat', 'lng',
-                  'whatsapp', 'link_pagina')
+                  'whatsapp', 'link_pagina', 'nombre_distribuidor')
 
     def get_concentradores(self, obj):
         concentradores = obj.concentrador_set.all()
