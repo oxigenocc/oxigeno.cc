@@ -64,7 +64,7 @@ class TanqueSerializer(serializers.ModelSerializer):
         return obj.ofrece_renta
 
     def get_venta(self, obj):
-        return obj.ofrece_recarga
+        return obj.ofrece_venta
 
     def get_recarga(self, obj):
         return obj.ofrece_recarga
