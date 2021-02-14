@@ -21,7 +21,7 @@ export const Footer = () =>{
                     Si eres un distribuidor de oxígeno y 
                     te gustaría aparecer en nuestra base 
                     de datos da 
-                    click <Link onClick={topFunction} to="/formulario">aquí</Link> y llena el formulario de registro.
+                    click <Link onClick={topFunction} to="/oxigeno/formulario">aquí</Link> y llena el formulario de registro.
                 </p>
             </div>
             <div className="footerPostman">

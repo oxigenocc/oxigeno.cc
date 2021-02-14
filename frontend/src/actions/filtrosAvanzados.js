@@ -66,3 +66,30 @@ export const filtroTarjeta = (value)=>{
         }
     }
 }
+
+export const filtroAbiertoFin = (value)=>{
+    return{
+        type: types.CambiarFiltro,
+        payload:{
+            abiertoFin: value
+        }
+    }
+}
+
+export const filtroAbierto24 = (value)=>{
+    return{
+        type: types.CambiarFiltro,
+        payload:{
+            abierto24: value
+        }
+    }
+}
+
+export const filtroGratis = (value)=>{
+    return{
+        type: types.CambiarFiltro,
+        payload:{
+            gratis: value
+        }
+    }
+}
