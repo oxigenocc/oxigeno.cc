@@ -43,7 +43,7 @@ class DistribuidorFilterSet(FilterSet):
 
     def filter_field_gt(self, queryset, name, value):
         lookup = '__'.join([name, 'gt'])
-        return queryset.filter(**{lookup: value}).distinct()
+        return queryset.filter(**{lookup: 0}).distinct()
 
     def filter_field_bool(self, queryset, name, value):
         return queryset.filter(**{name: bool(value)}).distinct()
