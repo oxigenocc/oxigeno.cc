@@ -9,7 +9,10 @@ export const filtrosAvanzadosReducer = ( initialState = {
     concentradorVenta: false,
     concentradorRenta:false,
     domicilioSwitch:false,
-    tarjetaSwitch:false
+    tarjetaSwitch:false,
+    abiertoFin: false,
+    abierto24: false,
+    gratis: false
 }, action )=>{
     switch (action.type) {
         case types.CambiarFiltro:

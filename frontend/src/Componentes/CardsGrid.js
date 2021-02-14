@@ -12,7 +12,7 @@ export default function CardsGrid(props) {
   const [inicio,setInicio]=useState(0);
   const state = useSelector( state => state.filtrosAvanzados );  
   const [activePage, setActivePage] = useState(1);
-  const [perPage, setPerPage] = useState(6);
+
 
   const handleChange = (event, value) => {
     topFunction();
@@ -24,7 +24,7 @@ export default function CardsGrid(props) {
     document.documentElement.scrollTop = 100; // For Chrome, Firefox, IE and Opera
   }
 
-  const endPoint = `${endPoints}/v1.1/data`;
+  const endPoint = `${endPoints}data/`;
 
   useEffect(() => {
     if( activePage === 1 && inicio===1){
@@ -48,14 +48,17 @@ export default function CardsGrid(props) {
       const dataPeticion = await axios.get(endPoint,{
         params:{
           page: activePage,
-          perPage: perPage,
-          tanqueVenta: state.tanqueVenta ? 1 : 0,
-          tanqueRecarga: state.tanqueRecarga ? 1 : 0,
-          tanqueRenta: state.tanqueRenta ? 1 : 0,
-          concentradorVenta: state.concentradorVenta ? 1 : 0,
-          concentradorRenta: state.concentradorRenta ? 1 : 0,
-          pagoConTarjeta: state.tarjetaSwitch ? 1 : 0,
-          aDomicilio: state.domicilioSwitch ? 1 : 0
+          tanqueVenta: state.tanqueVenta ? 1 : "",
+          tanqueRecarga: state.tanqueRecarga ? 1 : "",
+          tanqueRenta: state.tanqueRenta ? 1 : "",
+          concentradorVenta: state.concentradorVenta ? 1 : "",
+          concentradorRenta: state.concentradorRenta ? 1 : "",
+          pagoConTarjeta: state.tarjetaSwitch ? 1 : "",
+          aDomicilio: state.domicilioSwitch ? 1 : "",
+          abiertoFin: state.abiertoFin ? 1 : "",
+          abierto24: state.abierto24 ? 1 : "",
+          gratis: state.gratis ? 1 : "",
+          incluirBajas: 0,
         }
       });
       const dataBase= await dataPeticion.data;
@@ -73,9 +76,9 @@ export default function CardsGrid(props) {
       <>
         <div className="tarjetas-container col-12 col-md-9" >
           { 
-            data.distribuidores.length > 0 
+            data.results.length > 0 
             ?
-              data.distribuidores.map((distribuidor) =>
+              data.results.map((distribuidor) =>
                 <MyCard 
                   key={`${distribuidor.id}`}
                   distribuidor = {distribuidor}
@@ -89,7 +92,7 @@ export default function CardsGrid(props) {
             </div>
           } 
           <div className="paginacionContainer">
-            <Pagination count={Math.ceil(data.total/6)} variant="outlined" color="primary" page={activePage} onChange={handleChange}/>
+            <Pagination count={Math.ceil(data.count/6)} variant="outlined" color="primary" page={activePage} onChange={handleChange}/>
           </div>
         </div>
       </>

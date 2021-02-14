@@ -41,7 +41,7 @@ export const ContenidoFormulario = () => {
             swal("¡Alerta!", "Por favor llene los campos Requeridos", "warning");
         }else{
             try {
-                const peticion= await axios.post(`${endPoints}/formulario/data`,{
+                const peticion= await axios.post(`${endPoints}potencial/formulario`,{
                     params:{
                         nombreDistribuidor: formValues.nombreDistribuidor,
                         rfc: formValues.rfc,
@@ -59,6 +59,8 @@ export const ContenidoFormulario = () => {
                         ofreceRentaDeConcentrador: boolValues.ofreceRentaDeConcentrador,
                     }
                 });
+
+                console.log(peticion);
 
                 if (await peticion.status ===200) {
                     swal("Solicitud exitosa", "Nos contactaremos contigo lo más pronto posible", "success");

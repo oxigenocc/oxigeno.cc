@@ -7,7 +7,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import {useDispatch,useSelector} from "react-redux";
-import {filtroDomicilio,filtroTarjeta,filtroTanqueVenta,filtroTanqueRenta,filtroTanqueRecarga,filtroConcentradorVenta,filtroConcentradorRenta} from "../actions/filtrosAvanzados";
+import {filtroDomicilio,filtroTarjeta,filtroTanqueVenta,filtroTanqueRenta,filtroTanqueRecarga,filtroConcentradorVenta,filtroConcentradorRenta, filtroAbiertoFin, filtroAbierto24, filtroGratis} from "../actions/filtrosAvanzados";
 
 export const MenuLateral = () =>{
 
@@ -18,6 +18,8 @@ export const MenuLateral = () =>{
     const [concentrador, setConcentrador] = useState(false)
     const [domicilio, setDomicilio] = useState(false)
     const [tarjeta, setTarjeta] = useState(false)
+    const [otros, setOtros] = useState(false)
+    const [recargaGratis, setRecargaGratis] = useState(false)
     
     
     const toggle = (id) =>{
@@ -34,6 +36,12 @@ export const MenuLateral = () =>{
                 break;
             case 3: 
                 setTarjeta(!tarjeta);
+                break;
+            case 4: 
+                setOtros(!otros);
+                break;
+            case 5: 
+                setRecargaGratis(!recargaGratis);
                 break;
             default:
                 break;
@@ -62,6 +70,15 @@ export const MenuLateral = () =>{
                 break;
             case 6:
                 dispatch( filtroTarjeta(!state.tarjetaSwitch) );
+                break;
+            case 7:
+                dispatch( filtroAbiertoFin(!state.abiertoFin) );
+                break;
+            case 8:
+                dispatch( filtroAbierto24(!state.abierto24) );
+                break;
+            case 9:
+                dispatch( filtroGratis(!state.gratis) );
                 break;
         
             default:
@@ -129,6 +146,29 @@ export const MenuLateral = () =>{
                 }
             </Card>
             <Card style={{ width: '100%' }}>
+                <Card.Header onClick={() => toggle(5) } id="tanque-header">
+                    <div className="flecha-texto">
+                        Recarga gratis
+                    </div>
+                    <div className="flecha">
+                        { !recargaGratis ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                
+                    { recargaGratis && 
+                        <div className="switch-container">
+                            <Switch
+                                className="switch"
+                                checked={state.gratis}
+                                onChange={() => cambiarFiltro(9)}
+                                name="checkedA"
+                                color="primary"
+                                inputProps={{ 'aria-label': 'secondary checkbox' }}
+                            />
+                        </div>
+                    }
+            </Card>
+            <Card style={{ width: '100%' }}>
                 <Card.Header onClick={() => toggle(2) } id="tanque-header">
                     <div className="flecha-texto">
                         Servicio a domicilio
@@ -171,6 +211,32 @@ export const MenuLateral = () =>{
                             />
                         </div>
                     }
+            </Card>
+            <Card style={{ width: '100%' }}>
+                <Card.Header onClick={ () => toggle(4) } id="tanque-header">
+                    <div className="flecha-texto">
+                        Horarios
+                    </div>
+                    <div className="flecha">
+                        { !otros ? <KeyboardArrowDown /> : <KeyboardArrowUp /> }
+                    </div>
+                </Card.Header>
+                { otros && 
+                    <div className="menu-checkbox">
+                        <FormGroup>
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={state.abiertoFin} onChange={() => cambiarFiltro(7)} name="checkedA"/>}
+                                label="Abierto fines de semana"
+                                style={{ marginLeft: 0}}
+                            />
+                            <FormControlLabel
+                                control={<Checkbox color="primary" checked={state.abierto24} onChange={() => cambiarFiltro(8) } name="checkedA" />}
+                                label="Abierto 24h"
+                                style={{ marginLeft: 0}}
+                            />
+                        </FormGroup>
+                    </div>
+                }
             </Card>
         </div>
     );
