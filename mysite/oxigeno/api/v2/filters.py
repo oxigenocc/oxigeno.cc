@@ -44,8 +44,7 @@ class DistribuidorFilterSet(FilterSet):
     def filter_field_gt(self, queryset, name, value):
         lookup = '__'.join([name, 'gt'])
         name_split = name.split('_')
-        ofrece = '_'.join([name_split[0], '_', 'ofrece', name_split[-1]])
-        print(ofrece)
+        ofrece = '_'.join([name_split[0] + '_', 'ofrece', name_split[-1]])
         return queryset.filter(**{lookup: 0}).filter(**{ofrece: True}).distinct()
 
     def filter_field_bool(self, queryset, name, value):
