@@ -22,12 +22,12 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset().annotate(
             max_value=Greatest(
-                Coalesce('tanque__disponibilidad_renta',
+                         'tanque__disponibilidad_renta',
                          'tanque__disponibilidad_venta',
                          'tanque__disponibilidad_recarga',
                          'concentrador__disponibilidad_venta',
                          'concentrador__disponibilidad_renta'
-                         ), 0)).order_by('-max_value'))
+                         , 0)).order_by('-max_value'))
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
