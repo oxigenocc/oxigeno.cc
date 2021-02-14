@@ -1,4 +1,4 @@
-from django.db.models import Count
+from django.db.models.functions import Greatest, Coalesce
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -21,8 +21,13 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
 
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset().annotate(
-            total_items=Count('tanque')+Count('concentrador'))
-        ).order_by('-total_items')
+            max_value=Greatest(
+                Coalesce('tanque__disponibilidad_renta',
+                         'tanque__disponibilidad_venta',
+                         'tanque__disponibilidad_recarga',
+                         'concentrador__disponibilidad_venta',
+                         'concentrador__disponibilidad_renta'
+                         ), 0)).order_by('-max_value'))
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=200)
 
