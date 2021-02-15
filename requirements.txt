@@ -6,3 +6,8 @@ psycopg2-binary
 gunicorn
 django-simple-history
 django-cors-headers
+djangorestframework==3.12.2
+django-decouple==2.1
+ipython==7.20.0
+django-filter==2.4.0
+djangorestframework-simplejwt==4.6.0
