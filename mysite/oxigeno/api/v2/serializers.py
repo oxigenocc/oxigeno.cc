@@ -91,6 +91,7 @@ class DistribuidorSerializer(serializers.ModelSerializer):
     tanques = serializers.SerializerMethodField()
     lat = serializers.SerializerMethodField()
     lng = serializers.SerializerMethodField()
+    ultima_actualizacion = serializers.SerializerMethodField()
 
     class Meta:
         model = Distribuidor
