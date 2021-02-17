@@ -35,7 +35,7 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
                 return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        return Response({'results': serializer.data})
 
 
 
