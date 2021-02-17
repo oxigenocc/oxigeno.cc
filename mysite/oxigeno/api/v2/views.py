@@ -28,13 +28,14 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
                          'concentrador__disponibilidad_venta',
                          'concentrador__disponibilidad_renta'
                          , 0)).order_by('-max_value'))
-        page = self.paginate_queryset(queryset)
-        if page is not None:
-            serializer = self.get_serializer(page, many=True)
-            return self.get_paginated_response(serializer.data)
+        if request.query_params.get('page'):
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = self.get_serializer(page, many=True)
+                return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+        return Response({'results': serializer.data})
 
 
 

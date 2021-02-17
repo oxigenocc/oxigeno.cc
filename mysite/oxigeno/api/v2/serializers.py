@@ -128,7 +128,7 @@ class DistribuidorSerializer(serializers.ModelSerializer):
             else datetime.min.replace(tzinfo=pytz.UTC)
         ultima_actualización = max(
             [obj.ultima_actualizacion, max_tanque, max_concentrador])
-        return str(ultima_actualización)
+        return ultima_actualización.strftime("%Y-%m-%dT%H:%M:%S.%fZ") 
 
 
 class DistribuidorPotencialSerializer(serializers.ModelSerializer):
