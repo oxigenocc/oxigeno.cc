@@ -136,3 +136,83 @@ class DistribuidorPotencialSerializer(serializers.ModelSerializer):
         model = DistribuidorPotencial
         fields = '__all__'
         read_only_fields = ('id',)
+
+
+class HistoricalRecordSerializer(serializers.ModelSerializer):
+    def __init__(self, model, *args, fields='__all__', **kwargs):
+        self.Meta.model = model
+        self.Meta.fields = fields
+        super().__init__()
+
+    class Meta:
+        pass
+
+
+class DistribuidorHistoricalSerializer(serializers.ModelSerializer):
+    history = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Distribuidor
+        fields = '__all__'
+
+    def get_history(self, obj):
+        model = obj.history.__dict__['model']
+        fields = '__all__'
+        serializer = HistoricalRecordSerializer(model,
+                              obj.history.all().order_by('history_id'),
+                              fields=fields, many=True)
+        serializer.is_valid()
+        return serializer.data
+
+
+class TanqueHistoricalSerializer(serializers.ModelSerializer):
+    history = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Tanque
+        fields = '__all__'
+
+    def get_history(self, obj):
+        model = obj.history.__dict__['model']
+        fields = '__all__'
+        serializer = HistoricalRecordSerializer(model,
+                              obj.history.all().order_by('history_id'),
+                              fields=fields, many=True)
+        serializer.is_valid()
+        return serializer.data
+
+
+class ConcentradorHistoricalSerializer(serializers.ModelSerializer):
+    history = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Concentrador
+        fields = '__all__'
+
+    def get_history(self, obj):
+        model = obj.history.__dict__['model']
+        fields = '__all__'
+        serializer = HistoricalRecordSerializer(model,
+                                                obj.history.all().order_by(
+                                                    'history_id'),
+                                                fields=fields, many=True)
+        serializer.is_valid()
+        return serializer.data
+
+
+class DistribuidorPotencialHistoricalSerializer(serializers.ModelSerializer):
+    history = serializers.SerializerMethodField()
+
+    class Meta:
+        model = DistribuidorPotencial
+        fields = '__all__'
+
+    def get_history(self, obj):
+        model = obj.history.__dict__['model']
+        fields = '__all__'
+        serializer = HistoricalRecordSerializer(model,
+                                                obj.history.all().order_by(
+                                                    'history_id'),
+                                                fields=fields, many=True)
+        serializer.is_valid()
+        return serializer.data
