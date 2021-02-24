@@ -28,10 +28,10 @@ class DistribuidorFilterSet(FilterSet):
     incluirBajas = NumberFilter(
         method='filter_field_bool',
         field_name='dar_de_baja')
-    abiertoSabado = NumberFilter(
+    abreSabado = NumberFilter(
         method='filter_field_bool',
         field_name='abre_sabado')
-    abiertoDomingo = NumberFilter(
+    abreDomingo = NumberFilter(
         method='filter_field_bool',
         field_name='abre_domingo')
     abierto24 = NumberFilter(
