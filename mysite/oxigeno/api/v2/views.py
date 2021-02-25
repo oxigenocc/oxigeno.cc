@@ -1,12 +1,14 @@
 from django.db.models.functions import Greatest, Coalesce
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import mixins, viewsets
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from oxigeno.models import Distribuidor, Tanque, Concentrador,\
     DistribuidorPotencial
 from oxigeno.api.v2.serializers import DistribuidorSerializer,\
-    DistribuidorUpdateSerializer, DistribuidorPotencialSerializer
+    DistribuidorUpdateSerializer, DistribuidorPotencialSerializer,\
+    DistribuidorHistoricalSerializer, TanqueHistoricalSerializer,\
+    ConcentradorHistoricalSerializer, DistribuidorPotencialHistoricalSerializer
 from oxigeno.api.v2.filters import DistribuidorFilterSet
 
 
@@ -68,3 +70,34 @@ class DistribuidorPotencialCreateViewSet(mixins.CreateModelMixin,
     queryset = DistribuidorPotencial.objects.all()
     serializer_class = DistribuidorPotencialSerializer
 
+
+class DistribuidorHistoricalViewSet(mixins.ListModelMixin,
+                                    mixins.RetrieveModelMixin,
+                                    viewsets.GenericViewSet):
+    permission_classes = (IsAdminUser, )
+    queryset = Distribuidor.objects.all()
+    serializer_class = DistribuidorHistoricalSerializer
+
+
+class TanqueHistoricalViewSet(mixins.ListModelMixin,
+                              mixins.RetrieveModelMixin,
+                              viewsets.GenericViewSet):
+    permission_classes = (IsAdminUser,)
+    queryset = Tanque.objects.all()
+    serializer_class = TanqueHistoricalSerializer
+
+
+class ConcentradorHistoricalViewSet(mixins.ListModelMixin,
+                              mixins.RetrieveModelMixin,
+                              viewsets.GenericViewSet):
+    permission_classes = (IsAdminUser,)
+    queryset = Concentrador.objects.all()
+    serializer_class = ConcentradorHistoricalSerializer
+
+
+class DistribuidorPotencialHistoricalViewSet(mixins.ListModelMixin,
+                              mixins.RetrieveModelMixin,
+                              viewsets.GenericViewSet):
+    permission_classes = (IsAdminUser,)
+    queryset = DistribuidorPotencial.objects.all()
+    serializer_class = DistribuidorPotencialHistoricalSerializer
