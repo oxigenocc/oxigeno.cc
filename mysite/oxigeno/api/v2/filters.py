@@ -28,9 +28,12 @@ class DistribuidorFilterSet(FilterSet):
     incluirBajas = NumberFilter(
         method='filter_field_bool',
         field_name='dar_de_baja')
-    abiertoFin = NumberFilter(
+    abreSabado = NumberFilter(
         method='filter_field_bool',
-        field_name='abre_fin_de_semana')
+        field_name='abre_sabado')
+    abreDomingo = NumberFilter(
+        method='filter_field_bool',
+        field_name='abre_domingo')
     abierto24 = NumberFilter(
         method='filter_field_bool',
         field_name='abre_24h')
@@ -58,5 +61,5 @@ class DistribuidorFilterSet(FilterSet):
         model = Distribuidor
         fields = ('tanqueVenta', 'tanqueRecarga', 'tanqueRenta',
                   'concentradorVenta', 'concentradorRenta', 'pagoConTarjeta',
-                  'aDomicilio', 'incluirBajas', 'nombreComo', 'abiertoFin',
-                  'abierto24', 'gratis')
+                  'aDomicilio', 'incluirBajas', 'nombreComo',
+                  'abierto24', 'gratis', 'abreSabado', 'abreDomingo')

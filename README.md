@@ -166,19 +166,21 @@ user@server:~$ sudo nginx -s reload
 
 ## Frontend
 
+[I'm an inline-style link](https://www.google.com)
 
 Contribuidores:
-* @klaymond
-* @dstprojects
-* @lorenzoajt 
-* @AlexisFlores17
-* @jorg-gr
+* Uri Goldberg Kleiman: [klaymond](https://github.com/klaymond)
+* Alexis Guerrero: [dstprojects](https://github.com/dstprojects)
+* Lorenzo Torres: https://github.com/lorenzoajt 
+* Alexis Flores: https://github.com/AlexisFlores17
+* Jorge García: https://github.com/jorg-gr
+* Lopsan: [LopsanAMO](https://github.com/LopsanAMO)
 
 Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. El apoyo de las siguintes personas e instituciones fue indispensable:
 * Diana Urquiza
 * Mauro Herrera
 * Mijael Gutiérrez
 * LSD Lab
-* Agencia Digital de Innovació Pública de la CDMX
+* Agencia Digital de Innovación Pública de la CDMX
 * Tec de Monterrey
 
