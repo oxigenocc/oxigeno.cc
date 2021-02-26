@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from api.v2 import urls as APIV1Urls
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
