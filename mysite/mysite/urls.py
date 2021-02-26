@@ -7,7 +7,7 @@ urlpatterns = [
     path('oxigeno/', include('oxigeno.urls')),
     path('manager/', include('manager.urls')),
     path('api/v2/', include(APIV1Urls)),
-    path('/login',TemplateView.as_view(
+    path('login/',TemplateView.as_view(
                                        template_name='index.html'), 
                                        name='login'
     ),
