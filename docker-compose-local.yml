@@ -14,8 +14,8 @@ services:
     command: /start.sh
     restart: always
     environment:
-      - SECRET_KEY=srdfsfdsfds
-      - API_KEY=AIzaSyB0_LtqtrlLjjcVFbJq5kSciPj2g4o5B8g
+      - SECRET_KEY=<DJANGO_SECRET_KEY>
+      - API_KEY=<GOOGLE_API_KEY>
       - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASS=MyWeirdPass!
