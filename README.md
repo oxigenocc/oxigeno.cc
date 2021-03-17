@@ -363,6 +363,7 @@ Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. E
 * Diana Urquiza
 * Mauro Herrera
 * Mijael Gutiérrez
+* Leonardo Morales
 * LSD Lab
 * Agencia Digital de Innovación Pública de la CDMX
 * Tec de Monterrey
