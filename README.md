@@ -364,6 +364,7 @@ Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. E
 * Mauro Herrera
 * Mijael Gutiérrez
 * Leonardo Morales
+* Geóg. Alejandro Díaz Ponce
 * LSD Lab
 * Agencia Digital de Innovación Pública de la CDMX
 * Tec de Monterrey
