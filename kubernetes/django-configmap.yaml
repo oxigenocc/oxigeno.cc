@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-config
+data:
+  SECRET_KEY: secretkey # Cambia esto por una generada aquí https://miniwebtool.com/django-secret-key-generator/
+  API_KEY: apikey # Cambia esto por tu API key de google maps
+  DB_NAME: postgres
+  DB_USER: postgres
+  DB_PASS: dbpass
+  DB_HOST: db
+  DB_PORT: 5432
+  ALLOWED_HOSTS: oxigenomexico.cc,www.oxigenomexico.cc # Cambia esto por el dominio que vas a usar en tu host
+  DEBUG: False

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+  labels:
+    app: django
+spec:
+    replicas: 2
+  selector:
+    matchLabels:
+      app: django
+  template:
+    metadata:
+      labels:
+        app: django
+    spec:
+      containers:
+        - image: oxigenocc/oxigeno.cc:latest
+          name: django
+          envFrom:
+          - secretRef:
+              name: django-secret
+          - configMapRef:
+              name: django-config
+          ports:
+            - containerPort: 8000
+              name: gunicorn

@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: django-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt-staging"
+spec:
+  tls:
+  - hosts:
+    - oxigenomexico.cc
+    - www.oxigenomexico.cc
+    secretName: django-tls
+  rules:
+  - host: your_domain.com
+    http:
+      paths:
+      - backend:
+          serviceName: polls
+          servicePort: 8000
