@@ -156,14 +156,197 @@ user@server:~$ sudo nginx -s reload
 
 ## Django
 ### Modelos
-* Distribuidores:
+* Distribuidor:
   - id:
     * AutoField:
       - primary_key=True
   - nombre_distribuidor:
     * CharField:
       - max_length=100
+  - horario:
+    * CharField:
+      - max_length=100
+  - estado:
+    * CharField:
+      - max_length=50
+  - direccion:
+    * TextField
+  - ciudad:
+    * CharField:
+      - max_length=100
+  - a_domicilio:
+    * BooleanField
+  - pago_con_tarjeta:
+    * BooleanField
+  - notas:
+    * TextField:
+      - null=True
+      - blank=True
+  - notas_internas:
+    * TextField:
+      - null=True, 
+      - blank=True
+  - telefono:
+    * CharField:
+      - max_length=20
+  - whatsapp:
+    * CharField:
+      - max_length=20
+      - null=True
+      - blank=True
+  - link_pagina:
+    * CharField:
+      - max_length=100
+      - null=True
+      - blank=True
+  - address:
+    * AddressField:
+      - max_length=200
+      - default=''
+  - geolocation:
+    * GeoLocationField:
+      - max_length=100
+      - default=''
+  - dar_de_baja:
+    * BooleanField:
+      - default=False
+  - fecha_creacion:
+    * DateTimeField:
+      - auto_now_add=True
+  - ultima_actualizacion:
+    * DateTimeField:
+      - auto_now=True
+  - abre_sabado:
+    * BooleanField:
+      - default=True
+  - abre_domingo:
+    * BooleanField:
+      - default=True
+  - abre_24h:
+    * BooleanField:
+      - default=True
+  - recarga_gratis:
+    * BooleanField:
+      - default=True
+  - history:
+    * simple_history.models.HistoricalRecords
+  
+* Tanque:
+  - id:
+    * AutoField:
+      - primary_key=True
+  - distribuidor:                   
+    * ForeignKey:
+        - Distribuidor
+        - on_delete=models.CASCADE
+  - ofrece_renta:
+    * BooleanField:
+      - default=True
+  - disponibilidad_renta:
+    * IntegerField
+  - ofrece_venta:
+    * BooleanField:
+      - default=True
+  - disponibilidad_venta
+    * IntegerField
+  - ofrece_recarga:
+    * BooleanField:
+      - default=True
+  - disponibilidad_recarga:
+    * IntegerField
+  - ultima_actualizacion:
+    * DateTimeField:
+      - auto_now=True
+  - fecha_creacion:
+    * DateTimeField:
+      - auto_now_add=True
+  - history:
+    * simple_history.models.HistoricalRecords
+  
+* Concentrador:
+  - id:
+    * AutoField:
+      - primary_key=True
+  - distribuidor:                   
+    * ForeignKey:
+        - Distribuidor
+        - on_delete=models.CASCADE
+  - ofrece_renta:
+    * BooleanField:
+      - default=True
+  - disponibilidad_renta:
+    * IntegerField
+  - ofrece_venta:
+    * BooleanField:
+      - default=True
+  - disponibilidad_venta
+    * IntegerField
+  - ultima_actualizacion:
+    * DateTimeField:
+      - auto_now=True
+  - fecha_creacion:
+    * DateTimeField:
+      - auto_now_add=True
+  - history:
+    * simple_history.models.HistoricalRecords
+  
+* DistribuidorPotencial:
+  - id:
+    * AutoField:
+      - primary_key=True
+  - nombre_distribuidor:
+    * CharField:
+      - max_length=100
+  - rfc:
+    * CharField:
+      - max_length=13
+  - telefono:
+    * CharField:
+      - max_length=20
+  - direccion:
+    * TextField
+  - horario:
+    * CharField:
+      - max_length=100
+  - link_pagina:
+    * CharField:
+      - max_length=100
+      - null=True
+      - blank=True
+  - whatsapp:
+    * CharField:
+      - max_length=20
+      - null=True
+      - blank=True
+  - a_domicilio:
+    * BooleanField
+  - pago_con_tarjeta:
+    * BooleanField
+  - ofrece_venta_de_tanque:
+    * BooleanField
+  - ofrece_renta_de_tanque:
+    * BooleanField
+  - ofrece_recarga_de_tanque:
+    * BooleanField
+  - ofrece_venta_de_concentrador:
+    * BooleanField
+  - ofrece_renta_de_concentrador:
+    * BooleanField
+  - notas_internas:
+    * TextField:
+      - null=True, 
+      - blank=True
+  - fecha_creacion:
+    * DateTimeField:
+      - auto_now_add=True
+  - ultima_actualizacion:
+    * DateTimeField:
+      - auto_now=True
+  - history:
+    * simple_history.models.HistoricalRecords
 
+  
+  
 ## Frontend
 
 [I'm an inline-style link](https://www.google.com)
@@ -180,6 +363,8 @@ Este proyecto no se pudo lograr sin el esfuerzo e iniciativa de Naoli García. E
 * Diana Urquiza
 * Mauro Herrera
 * Mijael Gutiérrez
+* Leonardo Morales
+* Geóg. Alejandro Díaz Ponce
 * LSD Lab
 * Agencia Digital de Innovación Pública de la CDMX
 * Tec de Monterrey
