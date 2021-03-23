@@ -29,7 +29,7 @@ services:
       - DB_PASS=MyWeirdPass!
       - DB_HOST=db2
       - DB_PORT=5432
-      - ALLOWED_HOSTS=myhost.com,www.myhost.com # Cambia esto por el dominio que vas a usar en tu host
+      - ALLOWED_HOSTS=myhost.com,www.myhost.com,web # Cambia esto por el dominio que vas a usar en tu host
       - DEBUG=True
       - STATIC_ROOT=/home/oxigenocc/static # Cambia esto a la ruta de tu directorio de static
     ports:
