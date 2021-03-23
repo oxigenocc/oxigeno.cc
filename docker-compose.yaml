@@ -11,12 +11,12 @@ services:
       - /home/oxigenocc/data-db/:/var/lib/postgresql/data # Cambia oxigenocc por el nombre del usuario de tu host
   db2:
     image: postgres
-      environment:
-        - POSTGRES_DB=postgres
-        - POSTGRES_USER=postgres
-        - POSTGRES_PASSWORD=MyWeirdPass!
-      volumes:
-        - /home/oxigenocc/data-db/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MyWeirdPass!
+    volumes:
+      - /home/oxigenocc/data-db/:/var/lib/postgresql/data
   web:
     restart: always
     build: .
