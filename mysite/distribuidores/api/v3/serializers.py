@@ -122,7 +122,7 @@ class DistribuidorUpdateSerializer(serializers.Serializer):
         self.distribuidor_data = {
             "notas": attrs['notas'],
             "notas_internas": attrs['notasInternas'],
-            "estado_id": attrs['estadoId']
+            "estado_procedencia_id": attrs['estadoId']
         }
         self.tanque_data = {
             "ofrece_renta": attrs['tanqueOfreceRenta'],
