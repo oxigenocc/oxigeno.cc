@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.postgres',
     'oxigeno',
+    'equipos',
+    'distribuidores'
 ]
 
 SITE_ID = 1

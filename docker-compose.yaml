@@ -9,6 +9,14 @@ services:
       - POSTGRES_PASSWORD=MyWeirdPass! # Cambia esta clave a una segura
     volumes:
       - /home/oxigenocc/data-db/:/var/lib/postgresql/data # Cambia oxigenocc por el nombre del usuario de tu host
+  db2:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MyWeirdPass!
+    volumes:
+      - /home/oxigenocc/data-db/:/var/lib/postgresql/data
   web:
     restart: always
     build: .
@@ -19,15 +27,16 @@ services:
       - DB_NAME=postgres
       - DB_USER=postgres
       - DB_PASS=MyWeirdPass!
-      - DB_HOST=db
+      - DB_HOST=db2
       - DB_PORT=5432
-      - ALLOWED_HOSTS=myhost.com,www.myhost.com # Cambia esto por el dominio que vas a usar en tu host
-      - DEBUG=False
+      - ALLOWED_HOSTS=myhost.com,www.myhost.com,web # Cambia esto por el dominio que vas a usar en tu host
+      - DEBUG=True
       - STATIC_ROOT=/home/oxigenocc/static # Cambia esto a la ruta de tu directorio de static
     ports:
       - "5000:5000"
     depends_on:
       - db
+      - db2
   nginx:
     image: nginx:latest
     volumes:
