@@ -1,0 +1,71 @@
+version: '3.9'
+
+volumes:
+    oxigeno_cc: {}
+
+services:
+  backend:
+    build:
+      context: ./mysite
+    depends_on:
+      - db
+    volumes:
+      - ./mysite:/app
+    command: /start.sh
+    restart: always
+    environment:
+      - SECRET_KEY=<DJANGO_SECRET_KEY>
+      - API_KEY=<GOOGLE_API_KEY>
+      - DB_NAME=postgres
+      - DB_USER=postgres
+      - DB_PASS=MyWeirdPass!
+      - DB_HOST=db
+      - DB_PORT=5432
+      - ALLOWED_HOSTS=*
+      - DEBUG=False
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MyWeirdPass!
+
+  frontend:
+    image: node:13.12.0-alpine
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    restart: always
+
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=MyWeirdPass! # Cambia esta clave a una segura
+    volumes:
+      - oxigeno_cc:/var/lib/postgresql/data
+
+  documentation:
+    restart: always
+    build:
+      context: ./mysite
+    depends_on:
+      - backend
+    command: "mkdocs serve"
+    volumes:
+      - ./mysite:/app
+    ports:
+      - "8001:8001"
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./backend/media/:/media/
+      - ./backend/staticfiles/:/staticfiles/
+      - ./nginx/dev.conf:/etc/nginx/nginx.conf:ro
