@@ -12,7 +12,7 @@ spec:
     - www.oxigenomexico.cc
     secretName: django-tls
   rules:
-  - host: your_domain.com
+  - host: oxigenomexico.cc
     http:
       paths:
       - backend:

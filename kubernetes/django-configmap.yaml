@@ -8,7 +8,7 @@ data:
   DB_NAME: postgres
   DB_USER: postgres
   DB_PASS: dbpass
-  DB_HOST: db
+  DB_HOST: db # Hay que cambiar esto
   DB_PORT: 5432
   ALLOWED_HOSTS: oxigenomexico.cc,www.oxigenomexico.cc # Cambia esto por el dominio que vas a usar en tu host
   DEBUG: False
