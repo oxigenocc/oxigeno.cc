@@ -160,3 +160,4 @@ docker-compose.local.yaml
 frontend/.eslintcache
 .vscode/
 
+db-dump.json
