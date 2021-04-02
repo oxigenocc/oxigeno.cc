@@ -7,6 +7,9 @@ from simple_history.models import HistoricalRecords
 
 class Estado(models.Model):
     nombre = models.CharField(max_length=30)
+    alias = models.CharField(max_length=30)
+    header = models.ImageField(upload_to='photos')
+    footer = models.ImageField(upload_to='photos')
 
     class Meta:
         verbose_name_plural = 'Estados'

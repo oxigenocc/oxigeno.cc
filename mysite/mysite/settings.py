@@ -205,3 +205,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(days=1),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# Django storages settings for google cloud
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(BASE_DIR, 'oxigeno-cc-4d2523dd547c.json')
+GS_BUCKET_NAME = 'om-cc'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'

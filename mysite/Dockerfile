@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.8-slim
 
 # python envs
 ENV PYTHONFAULTHANDLER=1 \
@@ -14,6 +14,7 @@ RUN pip install -r ./requirements.txt
 
 # upload scripts
 COPY ./scripts/entrypoint.sh ./scripts/start.sh ./scripts/gunicorn.sh /
+COPY ../oxigeno-cc-4d2523dd547c.json /
 
 # Fix windows docker bug, convert CRLF to LF
 RUN sed -i 's/\r$//g' /start.sh && chmod +x /start.sh && sed -i 's/\r$//g' /entrypoint.sh && chmod +x /entrypoint.sh &&\

@@ -6,9 +6,18 @@ from equipos.api.v3.serializers import ConcentradorSerializer, TanqueSerializer
 
 
 class EstadoSerializer(serializers.ModelSerializer):
+    header = serializers.SerializerMethodField()
+    footer = serializers.SerializerMethodField()
+
     class Meta:
         model = Estado
-        fields = ('id', 'nombre')
+        fields = ('id', 'nombre', 'alias', 'header', 'footer')
+
+    def get_header(self, obj):
+        return obj.header.url
+
+    def get_footer(self, obj):
+        return obj.footer.url
 
 
 class DistribuidorSerializer(serializers.ModelSerializer):
