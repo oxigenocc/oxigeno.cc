@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'oxigeno',
     'equipos',
-    'distribuidores'
+    'distribuidores',
+    'users'
 ]
 
 SITE_ID = 1
@@ -75,6 +76,8 @@ MIDDLEWARE_CLASSES = (
 CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'mysite.urls'
+
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {

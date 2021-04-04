@@ -16,11 +16,7 @@ class UserLoginViewSet(mixins.CreateModelMixin,
 
         try:
             if serializer.is_valid():
-                user = serializer.user
-                refresh = RefreshToken.for_user(user)
-                return Response(status=200,
-                                data={'refresh': str(refresh),
-                                      'access': str(refresh.access_token)})
+                return Response(serializer.validated_data)
             else:
                 return Response(data=serializer.errors, status=400)
         except Exception as e:
