@@ -34,12 +34,14 @@ class DistribuidorListViewSet(mixins.ListModelMixin,
     def list(self, request, *args, **kwargs):
         queryset = self.filter_queryset(self.get_queryset().annotate(
             max_value=Greatest(
-                         'tanque__disponibilidad_renta',
-                         'tanque__disponibilidad_venta',
-                         'tanque__disponibilidad_recarga',
-                         'concentrador__disponibilidad_venta',
-                         'concentrador__disponibilidad_renta'
-                         , 0)).order_by('-max_value'))
+                        'tanque__disponibilidad_renta',
+                        'tanque__disponibilidad_venta',
+                        'tanque__disponibilidad_recarga',
+                        'concentrador__disponibilidad_venta',
+                        'concentrador__disponibilidad_renta'
+                        , 0)).order_by('-max_value'))
+        if request.query_params.get('alfabetico'):
+            queryset.order_by('nombre')
         if request.query_params.get('page'):
             page = self.paginate_queryset(queryset)
             if page is not None:
