@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'oxigeno',
     'equipos',
-    'distribuidores'
+    'distribuidores',
+    'users'
 ]
 
 SITE_ID = 1
@@ -75,6 +76,8 @@ MIDDLEWARE_CLASSES = (
 CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'mysite.urls'
+
+AUTH_USER_MODEL = 'users.User'
 
 TEMPLATES = [
     {
@@ -205,3 +208,9 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(days=1),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+# Django storages settings for google cloud
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(BASE_DIR, 'oxigeno-cc-4d2523dd547c.json')
+GS_BUCKET_NAME = 'om-cc'
+STATICFILES_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
