@@ -10,7 +10,6 @@ import simple_history.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('distribuidores', '0003_auto_20210322_0520'),
     ]
 
