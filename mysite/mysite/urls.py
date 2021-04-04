@@ -14,4 +14,12 @@ urlpatterns = [
                                        template_name='index.html'), 
                                        name='login'
     ),
+    path('distribuidores/',TemplateView.as_view(
+                                       template_name='index.html'), 
+                                       name='distribuidores'
+    ),
+    path('',TemplateView.as_view(
+                                       template_name='index.html'), 
+                                       name='index'
+    ),
 ]
