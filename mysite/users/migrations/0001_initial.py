@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('distribuidores', '0005_auto_20210322_0925'),
+        ('distribuidores', '0003_auto_20210322_0520'),
         ('auth', '0012_alter_user_first_name_max_length'),
     ]
 
